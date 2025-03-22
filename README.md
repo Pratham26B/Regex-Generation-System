@@ -28,18 +28,18 @@ This project automates the generation of **regular expressions (regex)** by anal
    python Regex_generator.py
 
 ## Usage:
->Provide a CSV or Excel file containing structured data.
->The system analyzes the data and generates a regex pattern based on majority occurrences.
->The model suggests the best regex pattern for validation.
->Users can fine-tune the regex based on real-time feedback.
+- Provide a CSV or Excel file containing structured data.
+- The system analyzes the data and generates a regex pattern based on majority occurrences.
+- The model suggests the best regex pattern for validation.
+- Users can fine-tune the regex based on real-time feedback.
 
 ## Technologies Used:
->Python – Core programming language
->TensorFlow/Keras – LSTM-based deep learning model
->NLP (spaCy) – Used for analyzing text patterns
->Regex (re module) – For pattern matching and validation
->Pandas – Data handling and processing
->NumPy – Efficient numerical operations
+- Python – Core programming language
+- TensorFlow/Keras – LSTM-based deep learning model
+- NLP (spaCy) – Used for analyzing text patterns
+- Regex (re module) – For pattern matching and validation
+- Pandas – Data handling and processing
+- NumPy – Efficient numerical operations
 
 ## Contributing:
 If you'd like to contribute, feel free to fork the repository, create a feature branch, and submit a pull request.
