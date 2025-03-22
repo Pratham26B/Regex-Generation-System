@@ -1,0 +1,1587 @@
+r'^\d{4}[-/]\d{2}[-/]\d{2}$',  # Format: YYYY-MM-DD or YYYY/MM/DD
+r'^\d{2}[-/]\d{2}[-/]\d{4}$',  # Format: DD-MM-YYYY or MM-DD-YYYY
+r'^\d{1,2} \w{3} \d{4}$',  # Format: DD MMM YYYY
+r'^\d{1,2}[-/]\d{2}$', # Format: DD-MM or MM-DD
+r'^\d{4}$',# Format: YYYY
+r'^\d{2}[-/]\d{2}$',   # Format: DD-MM or MM-DD
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # Format: YYYY-MM-DD or YYYY/MM/DD (with single/double-digit month/day)
+r'^\d{1,2} \w{3}$',# Format: DD MMM
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}$',  # Format: DD-MM-YYYY or MM-DD-YYYY
+r'^\d{1,2} \w{3} \d{2}$',  # Format: DD MMM YY
+r'^\d{4}/\d{2}/\d{2}$',# Format: YYYY/MM/DD
+r'^\d{2}-\d{2}-\d{4}$',# Format: DD-MM-YYYY
+r'^\d{1,2}[-/]\d{2}[-/]\d{4}$', # Format: DD/MM/YYYY or MM/DD/YYYY
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # Example: 2023-12-06 or 2023/12/06
+r'^\d{2}[-/]\d{2}[-/]\d{4}$',  # Example: 06-12-2023 or 06/12/2023
+r'^\d{1,2} \w{3} \d{4}$',  # Example: 6 Dec 2023
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}$',  # Example: 6-12-2023 or 6/12/2023
+r'^\d{4}$',# Example: 2023
+r'^\d{2}[-/]\d{2}$',   # Example: 06-12 or 06/12
+r'^\d{1,2} \w{3}$',# Example: 6 Dec
+r'^\d{1,2}[-/]\d{2}$'  # Example: 6-12 or 6/12
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # Format: YYYY-MM-DD or YYYY/MM/DD
+r'^\d{2}[-/]\d{2}[-/]\d{4}$',  # Format: MM-DD-YYYY or MM/DD/YYYY
+r'^\d{1,2} \w{3} \d{4}$',  # Format: D MMM YYYY (e.g., 5 Oct 2023)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}$',  # Format: DD-MM-YYYY or DD/MM/YYYY
+r'^\d{4}$',# Format: YYYY (e.g., 2023)
+r'^\d{2}[-/]\d{2}$',   # Format: MM-DD or MM/DD
+r'^\d{1,2} \w{3}$',# Format: D MMM (e.g., 5 Oct)
+r'^\d{1,2}[-/]\d{2}$'  # Format: DD-MM or DD/MM
+r'^\d{4}$',   # 404: Exactly 4 digits (e.g., 1234)
+r'^\d{2}[-/]\d{2}$',  # 405: Two digits followed by - or /, followed by two digits (e.g., 12-34, 12/34)
+r'^\d{1,2} \w{3}$',   # 406: 1-2 digits followed by a space and a 3-letter word (e.g., 5 Jan, 25 Dec)
+r'^\d{1,2}[-/]\d{2}$',# 407: 1-2 digits followed by - or /, followed by two digits (e.g., 5-12, 25/34)
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$', # 408: 4 digits, - or /, 1-2 digits, - or /, 1-2 digits (e.g., 2023-09-05, 2023/9/5)
+r'^\d{2}[-/]\d{2}[-/]\d{4}$', # 409: Two digits, - or /, two digits, - or /, four digits (e.g., 12-05-2023, 12/05/2023)
+r'^\d{1,2} \w{3} \d{4}$', # 410: 1-2 digits, space, 3-letter word, space, 4 digits (e.g., 5 Jan 2023, 25 Dec 2023)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}$'  # 412: 1-2 digits, - or /, 1-2 digits, - or /, four digits (e.g., 5-9-2023, 15/09/2023)
+r'^\d{2}[-/]\d{2}$',  # 252
+r'^\d{1,2} \w{3}$',  # 253
+r'^\d{1,2}[-/]\d{2}$',  # 254
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # 255
+r'^\d{2}[-/]\d{2}[-/]\d{4}$',  # 256
+r'^\d{1,2} \w{3} \d{4}$',  # 257
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # 258
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}$',  # 259
+r'^\d{4}$',  # 260
+r'^\d{2}[-/]\d{2}$',  # 261
+r'^\d{1,2} \w{3}$',  # 262
+r'^\d{1,2}[-/]\d{2}$',  # 263
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # 264
+r'^\d{2}[-/]\d{2}[-/]\d{4}$',  # 265
+r'^\d{1,2} \w{3} \d{4}$',  # 266
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # 267
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}$',  # 268
+r'^\d{4}$',  # 269
+r'^\d{2}[-/]\d{2}$',  # 270
+r'^\d{1,2} \w{3}$',  # 271
+r'^\d{1,2}[-/]\d{2}$',  # 272
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # 273
+r'^\d{2}[-/]\d{2}[-/]\d{4}$',  # 274
+r'^\d{1,2} \w{3} \d{4}$',  # 275
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # 276
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}$',  # 277
+r'^\d{4}$',  # 278
+r'^\d{2}[-/]\d{2}$',  # 279
+r'^\d{1,2} \w{3}$',  # 280
+r'^\d{1,2}[-/]\d{2}$',  # 281
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # 282
+r'^\d{2}[-/]\d{2}[-/]\d{4}$',  # 283
+r'^\d{1,2} \w{3} \d{4}$',  # 284
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # 285
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}$',  # 286
+r'^\d{4}$',  # 287
+r'^\d{2}[-/]\d{2}$',  # 288
+r'^\d{1,2} \w{3}$',  # 289
+r'^\d{1,2}[-/]\d{2}$',  # 290
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # 291
+r'^\d{2}[-/]\d{2}[-/]\d{4}$',  # 292
+r'^\d{1,2} \w{3} \d{4}$',  # 293
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',  # 294
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}$',  # 295
+r'^\d{4}$',  # 296
+r'^\d{2}[-/]\d{2}$',  # 297
+r'^\d{1,2} \w{3}$',  # 298
+r'^\d{1,2}[-/]\d{2}$',  # 299
+r'^\d{1,2}\s\w{3,9}\s\d{4}$',   # Format: DD Month YYYY (e.g., 01 January 2020)
+r'^\d{2}-\d{2}-\d{2}$',  # Format: DD-MM-YY (e.g., 01-01-20)
+r'^\d{1,2}[-/]\d{1,2}$',  # Format: DD/MM or MM/DD (e.g., 01/01 or 01-01)
+r'^\d{1,2}[\s-]\w{3}[\s-]\d{4}$',# Format: DD-MMM-YYYY or DD MMM YYYY (e.g., 01-Jan-2020)
+r'^\d{4}-\d{2}$',# Format: YYYY-MM (e.g., 2020-01)
+r'^\d{4}/\d{2}$',# Format: YYYY/MM (e.g., 2020/01)
+r'^\d{1,2}\s\w{3,9}$',   # Format: DD Month (e.g., 01 January)
+r'^\d{2}\.\d{2}\.\d{4}$',# Format: DD.MM.YYYY (e.g., 01.01.2020)
+r'^\d{4}\.\d{2}\.\d{2}$',# Format: YYYY.MM.DD (e.g., 2020.01.01)
+r'^\d{1,2}\s\w{3}$', # Format: DD MMM (e.g., 01 Jan)
+r'^\d{1,2}[-/]\d{2}[-/]\d{2}$',  # Format: DD-MM-YY or MM-DD-YY (e.g., 01-01-20 or 01/01/20)
+r'^\d{2}/\d{2}/\d{4}$',  # Format: MM/DD/YYYY (e.g., 01/01/2020)
+r'^\d{4}-\d{1,2}$',  # Format: YYYY-M (e.g., 2020-1)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}$',# Format: MM/DD/YYYY or DD/MM/YYYY (e.g., 01/01/2020)
+r'^\d{1,2}-\d{1,2}-\d{4}$',  # Format: MM-DD-YYYY (e.g., 01-01-2020)
+r'^\d{4}[-/]\d{2}[-/]\d{1,2}$',  # Format: YYYY-MM-DD or YYYY/MM/DD (e.g., 2020-01-01)
+r'^\d{4}/\d{1,2}/\d{1,2}$',  # Format: YYYY/MM/DD (e.g., 2020/01/01)
+r'^\d{2}\w{3}\d{4}$',# Format: DDMMMYYYY (e.g., 01Jan2020)
+r'^\d{4}-\d{1,2}-\d{1,2}$',  # Format: YYYY-MM-DD (e.g., 2020-01-01)
+r'^\d{1,2}-\d{1,2}-\d{4}$',  # Format: DD-MM-YYYY or MM-DD-YYYY (e.g., 01-01-2020)
+r'^\d{4}-\d{1,2}-\d{2}$',# Format: YYYY-MM-DD (e.g., 2020-01-01)
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',# Format: YYYY/MM/DD or YYYY-MM-DD (e.g., 2020/01/01)
+r'^\d{2}[-/]\d{2}[-/]\d{2}$',# Format: DD/MM/YY or MM/DD/YY (e.g., 01/01/20 or 01-01-20)
+r'^\d{2}\s\w{3}\s\d{4}$',# Format: DD MMM YYYY (e.g., 01 Jan 2020)
+r'^\d{2}-\d{3}-\d{4}$',  # Format: DD-DDD-YYYY (e.g., 01-001-2020)
+r'^\d{4}-\d{2}-\d{1,2}$',# Format: YYYY-MM-D (e.g., 2020-01-1)
+r'^\d{4}-\d{2}[-/]\d{2}$',   # Format: YYYY-MM/DD or YYYY-MM-DD (e.g., 2020-01/01)
+r'^\d{1,2}[-/]\w{3}[-/]\d{4}$',  # Format: DD-MMM-YYYY (e.g., 01-Jan-2020)
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}T\d{1,2}:\d{2}(:\d{2})?$', # Format: YYYY-MM-DDTHH:MM or YYYY-MM-DDTHH:MM:SS (e.g., 2020-01-01T12:30 or 2020-01-01T12:30:45)
+r'^\d{1,2} \w{3,9}, \d{4}$', # Format: DD Month, YYYY (e.g., 01 January, 2020)
+r'^\d{2}/\d{1,2}/\d{2}$',# Format: DD/MM/YY or MM/DD/YY (e.g., 01/01/20 or 01/01/20)
+r'^\d{1,2}-\d{1,2}-\d{1,4}$',# Format: DD/MM/YYYY or MM/DD/YYYY or DD-MM-YYYY (e.g., 01/01/2020)
+r'^\d{1,2}-\d{2}-\d{2}$',# Format: DD-MM-YY or MM-DD-YY (e.g., 01-01-20)
+r'^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$', # Format: YYYY-MM-DD HH:MM:SS (e.g., 2020-01-01 12:30:45)
+r'^\d{1,2} \w{3,9} \d{2}$',  # Format: DD Month YY (e.g., 01 January 20)
+r'^\d{1,2}[\s/]\d{1,2}[\s/]\d{1,4}$',# Format: DD/MM/YYYY or MM/DD/YYYY (e.g., 01/01/2020)
+r'^\d{4}-\d{3}$',# Format: YYYY-DDD (Julian date, e.g., 2020-001)
+r'^\d{4} \w{3,9} \d{2}$',# Format: YYYY Month DD (e.g., 2020 January 01)
+r'^\d{2}-\d{1,2}-\d{4}$',# Format: DD-MM-YYYY or MM-DD-YYYY (e.g., 01-01-2020)
+r'^\d{1,2} \w{3} \d{4}$',# Format: DD-MMM-YYYY (e.g., 01-Jan-2020)
+r'^\d{2}[-/]\d{2}[-/]\d{1,4}$',  # Format: DD/MM/YYYY or MM/DD/YYYY (e.g., 01/01/2020)
+r'^\d{4}[-/]\d{2}[-/]\d{2}[\s,]*T\d{2}:\d{2}(:\d{2})?$', # Format: YYYY-MM-DDTHH:MM or YYYY-MM-DDTHH:MM:SS (e.g., 2020-01-01T12:30 or 2020-01-01T12:30:45)
+r'^\d{2}[\s/]*\d{1,2}[\s/]*\d{4}$',  # Format: DD/MM/YYYY or MM/DD/YYYY (e.g., 01/01/2020)
+r'^\d{1,2}[\s/]*\d{2}[-/]\d{2}$',# Format: DD-MM-YY or MM-DD-YY (e.g., 01/01/20)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}$',# Format: DD/MM/YYYY or MM/DD/YYYY (e.g., 01/01/2020)
+r'^\d{4}\s\w{3,9}\s\d{1,2}$',  # Format: YYYY Month DD (e.g., 2020 January 1)
+r'^\d{2}[-/]\d{2}[-/]\d{2}\s\d{2}:\d{2}:\d{2}$',  # Format: DD/MM/YY HH:MM:SS or MM/DD/YY HH:MM:SS (e.g., 01/01/20 12:30:45)
+r'^\d{1,2}[-/]\d{2}[-/]\d{2}T\d{1,2}:\d{2}$', # Format: DD/MM/YYTHH:MM (e.g., 01/01/20T12:30)
+r'^\d{4}[\s/-]\d{1,2}[\s/-]\d{1,2}$',# Format: YYYY-MM-DD or YYYY/MM/DD (e.g., 2020-12-31 or 2020/12/31)
+r'^\d{2}\s\w{3,9}\s\d{2}$',  # Format: DD MMM YY (e.g., 01 Jan 20)
+r'^\d{2}[-/]\d{1,2}[-/]\d{2}\s[APap][Mm]$',  # Format: DD/MM/YY AM/PM (e.g., 01/01/20 AM)
+r'^\d{4}[\s/-]\d{1,2}[\s/-]\d{2}\s\d{2}:\d{2}$',  # Format: YYYY-MM-DD HH:MM or YYYY/MM/DD HH:MM (e.g., 2020-01-01 12:30)
+r'^\d{4}[\s/-]\d{1,2}[-/]\d{1,2}$',  # Format: YYYY/MM/DD or YYYY-MM-DD (e.g., 2020/01/01)
+r'^\d{2}[-/]\d{2}[-/]\d{4}\s\d{2}:\d{2}$',   # Format: DD/MM/YYYY HH:MM (e.g., 01/01/2020 12:30)
+r'^\d{1,2}-\w{3}-\d{4}$',   # Format: DD-MMM-YYYY (e.g., 01-Jan-2020)
+r'^\d{1,2}[-/]\w{3}[-/]\d{2}$',  # Format: DD-MMM-YY (e.g., 01-Jan-20)
+r'^\d{2}\s\w{3,9}\s\d{4}(\s\d{2}:\d{2}(:\d{2})?)?$', # Format: DD Month YYYY or DD Month YYYY HH:MM:SS (e.g., 01 January 2020 or 01 January 2020 12:30:45)
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}T\d{1,2}:\d{2}:\d{2}([.,]\d+)?$', # Format: YYYY-MM-DDTHH:MM:SS (with optional fractions of seconds) (e.g., 2020-01-01T12:30:45.123)
+r'^\d{1,2}[-/]\d{2}[-/]\d{2}[\s,]*T\d{1,2}:\d{2}$', # Format: DD-MM-YYTHH:MM or MM-DD-YYTHH:MM (e.g., 01-01-20T12:30)
+r'^\d{4}[-/]\d{2}[-/]\d{2}[\s,]*T\d{1,2}:\d{2}(:\d{2})?$', # Format: YYYY-MM-DDTHH:MM or YYYY-MM-DDTHH:MM:SS (e.g., 2020-01-01T12:30 or 2020-01-01T12:30:45)
+r'^\d{4}\s\w{3,9}\s\d{2},\s\d{4}$',  # Format: YYYY Month DD, YYYY (e.g., 2020 January 01, 2020)
+r'^\d{1,2}[-/]\d{2}[-/]\d{2}$', # Format: DD-MM-YY or MM-DD-YY (e.g., 01-01-20)
+r'^\d{1,2}\s\w{3,9}\s\d{1,2}$',  # Format: DD Month DD (e.g., 01 January 1)
+r'^\d{2}[-/]\d{2}[-/]\d{4}[\s,]*T\d{2}:\d{2}(\:\d{2})?$', # Format: DD/MM/YYYYTHH:MM or DD/MM/YYYYTHH:MM:SS (e.g., 01/01/2020T12:30 or 01/01/2020T12:30:45)
+r'^\d{1,2}\s\w{3,9}\s\d{4}$',  # Format: DD Month YYYY (e.g., 01 January 2020)
+r'^\d{4}[-/]\d{1,2}[-/]\d{2}$', # Format: YYYY/MM/DD or YYYY-MM-DD (e.g., 2020/01/01 or 2020-01-01)
+r'^\d{1,2}[-/]\d{2}[-/]\d{4}$', # Format: DD-MM-YYYY or MM-DD-YYYY (e.g., 01-01-2020)
+r'^\d{4}[-/]\d{2}[-/]\d{2}T\d{2}:\d{2}(\:\d{2})?$', # Format: YYYY-MM-DDTHH:MM or YYYY-MM-DDTHH:MM:SS (e.g., 2020-01-01T12:30 or 2020-01-01T12:30:45)
+r'^\d{2}\s\w{3,9}\s\d{2}$',  # Format: DD Month YY (e.g., 01 January 20)
+r'^\d{4}[\s/-]\d{1,2}[-/]\d{1,2}T\d{1,2}:\d{2}(:\d{2})?$', # Format: YYYY/MM/DDTHH:MM or YYYY-MM-DDTHH:MM:SS (e.g., 2020-01-01T12:30 or 2020-01-01T12:30:45)
+r'^\d{2}[-/]\d{2}[-/]\d{2}\s\d{2}:\d{2}$',   # Format: DD/MM/YY HH:MM (e.g., 01/01/20 12:30)
+r'^\d{1,2}[-/]\d{2}[-/]\d{2}[\s,]*T\d{2}:\d{2}$', # Format: DD-MM-YYTHH:MM or MM-DD-YYTHH:MM (e.g., 01-01-20T12:30)
+r'^\d{1,2}[-/]\w{3}[-/]\d{2}$',  # Format: DD-MMM-YY (e.g., 01-Jan-20)
+r'^\d{1,2}[-/]\d{2}[-/]\d{2}T\d{2}:\d{2}$',  # Format: DD-MM-YYTHH:MM (e.g., 01-01-20T12:30)
+r'^\d{4}[-/]\d{2}[-/]\d{2}[\s,]*T\d{2}:\d{2}$',   # Format: YYYY-MM-DDTHH:MM (e.g., 2020-01-01T12:30)
+r'^\d{1,2}[-/]\d{2}[-/]\d{4}$',  # Format: DD-MM-YYYY or MM-DD-YYYY (e.g., 01-01-2020)
+r'^\d{1,2}\s\w{3,9}\s\d{2}$',# Format: DD Month YY (e.g., 01 January 20)
+r'^\d{2}[-/]\d{2}[-/]\d{2}$',# Format: DD-MM-YY (e.g., 01-01-20)
+r'^\d{1,2}[-/]\w{3}[-/]\d{4}$',  # Format: DD-MMM-YYYY (e.g., 01-Jan-2020)
+r'^\d{4}[-/]\d{2}[-/]\d{2}[\s,]*T\d{2}:\d{2}(:\d{2})?$', # Format: YYYY-MM-DDTHH:MM or YYYY-MM-DDTHH:MM:SS (e.g., 2020-01-01T12:30 or 2020-01-01T12:30:45)
+r'^\d{4}[-/]\d{2}[-/]\d{2}$',# Format: YYYY-MM-DD (e.g., 2020-01-01)
+r'^\d{2}[-/]\d{2}[-/]\d{4}$',# Format: DD/MM/YYYY or MM/DD/YYYY (e.g., 01/01/2020)
+r'^\d{4}[\s/-]\d{1,2}[\s/-]\d{2}$',  # Format: YYYY-MM-DD or YYYY/MM/DD (e.g., 2020-12-31 or 2020/12/31)
+r'^\d{4}\s\w{3,9}\s\d{1,2}$',# Format: YYYY Month DD (e.g., 2020 January 1)
+r'^\d{1,2}[-/]\d{2}[-/]\d{2}[\s,]*T\d{1,2}:\d{2}$', # Format: DD-MM-YYTHH:MM or MM-DD-YYTHH:MM (e.g., 01-01-20T12:30)
+r'^\d{2}[-/]\d{2}[-/]\d{2}\s[APap][Mm]$',# Format: DD/MM/YY AM/PM (e.g., 01/01/20 AM)
+r'^\d{4}[-/]\d{2}[-/]\d{2}T\d{1,2}:\d{2}(:\d{2})?$' # Format: YYYY-MM-DDTHH:MM:SS (e.g., 2020-01-01T12:30:45)
+r'^\d{1,2}\s\w{3,9}\s\d{2,4}$',# Format: DD Month YYYY or DD Month YY (e.g., 01 January 2020 or 01 January 20)
+r'^\d{1,2}\s\w{3,9},\s\d{4}$',   # Format: DD Month, YYYY (e.g., 01 January, 2020)
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}\s\(\d{1,2}:\d{2}\)$', # Format: YYYY-MM-DD (HH:MM) (e.g., 2020-01-01 (12:30))
+r'^\d{1,2}[-/]\d{2}[-/]\d{2}[\s,]*[APap][Mm]$',  # Format: DD-MM-YY AM/PM (e.g., 01-01-20 AM)
+r'^\d{4}[-/]\d{1,2}[-/]\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?$', # Format: YYYY-MM-DDTHH:MM:SS or YYYY-MM-DDTHH:MM:SS.sss (e.g., 2020-01-01T12:30:45 or 2020-01-01T12:30:45.123)
+r'^\d{1,2}[-/]\d{2}[-/]\d{4}\s\(\d{1,2}:\d{2}\)$',  # Format: DD-MM-YYYY (HH:MM) (e.g., 01-01-2020 (12:30))
+r'^\d{4}[-/]\d{1,2}[-/]\d{2}[\s,]*T\d{2}:\d{2}:\d{2}(\.\d{1,3})?$', # Format: YYYY-MM-DDTHH:MM:SS.sss (e.g., 2020-01-01T12:30:45.123)
+r'^\d{2,4}[-/]\d{2}[-/]\d{2}\s[APap][Mm]$',  # Format: YYYY-MM-DD AM/PM (e.g., 2020-01-01 AM)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{1,4}[\s,]*T\d{2}:\d{2}$', # Format: DD-MM-YYTHH:MM (e.g., 01-01-20T12:30)
+r'^\d{2,4}[-/]\d{2}[-/]\d{2}T\d{2}:\d{2}:\d{2}$',  # Format: YYYY-MM-DDTHH:MM:SS (e.g., 2020-01-01T12:30:45)
+r'^\d{1,2}\s\w{3,9},\s\d{2}$',   # Format: DD Month, YY (e.g., 01 January, 20)
+r'^\d{4}[-/]\d{2}[-/]\d{2}\s(\d{1,2}:\d{2}:\d{2})?$',  # Format: YYYY-MM-DD (HH:MM:SS) (e.g., 2020-01-01 (12:30:45))
+r'^\d{1,2}[-/]\w{3,9}[-/]\d{4}$',# Format: DD-Month-YYYY (e.g., 01-January-2020)
+r'^\d{4}[-/]\d{2}[-/]\d{2}[\s,]*[APap][Mm]$',# Format: YYYY-MM-DD AM/PM (e.g., 2020-01-01 AM)
+r'^\d{4}[-/]\d{2}[-/]\d{2}\s\d{2}:\d{2}$',   # Format: YYYY-MM-DD HH:MM (e.g., 2020-01-01 12:30)
+r'^\d{4}[-/]\d{2}[-/]\d{2}\s\(\d{1,2}:\d{2}(:\d{2})?\)$', # Format: YYYY-MM-DD (HH:MM or HH:MM:SS) (e.g., 2020-01-01 (12:30) or 2020-01-01 (12:30:45))
+r'^\d{1,2}[-/]\d{2}[-/]\d{4}T\d{1,2}:\d{2}$',# Format: DD-MM-YYYYTHH:MM (e.g., 01-01-2020T12:30)
+r'^\d{1,2}[-/]\d{2}[-/]\d{2}[-/]\d{2}$', # Format: DD-MM-YY-YY (e.g., 01-01-20-20)
+r'^\d{4}\s\w{3,9}\s\d{2}$',  # Format: YYYY Month DD (e.g., 2020 January 01)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}\s\d{1,2}:\d{2}$',  # Format: DD-MM-YYYY HH:MM (e.g., 01-01-2020 12:30)
+r'^\d{1,2}\s\w{3,9}[-/]\d{4}$',  # Format: DD Month-YYYY (e.g., 01 January-2020)
+r'^\d{2}[-/]\d{2}[-/]\d{4}\s\(\d{1,2}:\d{2}\)$',  # Format: DD/MM/YYYY (HH:MM) (e.g., 01/01/2020 (12:30))
+r'^\d{4}[-/]\d{2}[-/]\d{2}\s\d{1,2}:\d{2}(\:\d{2})?$', # Format: YYYY-MM-DD HH:MM or YYYY-MM-DD HH:MM:SS (e.g., 2020-01-01 12:30 or 2020-01-01 12:30:45)
+r'^\d{1,2}\s\w{3,9}\s\d{4}$',# Format: DD Month YYYY (e.g., 01 January 2020)
+r'^\d{1,2}[-/]\d{2}[-/]\d{2}\s[APap][Mm]$',  # Format: DD-MM-YY AM/PM (e.g., 01-01-20 AM)
+r'^\d{1,2}-\d{1,2}-\d{4}$',# Format: MM-DD-YYYY or DD-MM-YYYY (e.g., 12-31-2020 or 31-12-2020)
+r'^\d{4}-\d{2}-\d{1,2}$',# Format: YYYY-MM-DD (e.g., 2020-01-01)
+r'^\d{2}/\d{1,2}/\d{4}$',# Format: MM/DD/YYYY (e.g., 12/31/2020)
+r'^\d{1,2}[\s/,-]\d{2}[\s/,-]\d{4}$',# Format: DD-MM-YYYY, DD/MM/YYYY, or DD,MM,YYYY (e.g., 31-12-2020, 31/12/2020, 31,12,2020)
+r'^\d{2}-\d{2}-\d{2}$',  # Format: MM-DD-YY or DD-MM-YY (e.g., 12-31-20 or 31-12-20)
+r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(\:\d{2})?$',# Format: YYYY-MM-DDTHH:MM or YYYY-MM-DDTHH:MM:SS (e.g., 2020-01-01T12:30 or 2020-01-01T12:30:45)
+r'^\d{2}\s\w{3,9}\s\d{1,2},\s\d{4}$',# Format: DD Month YYYY, (e.g., 01 January 2020, or 1 January 2020)
+r'^\d{1,2}[-/]\d{4}$',# Format: MM-YYYY or DD-YYYY (e.g., 12-2020 or 31-2020)
+r'^\d{4}[\s,-]\d{2}[\s,-]\d{2}$',# Format: YYYY-MM-DD or YYYY MM DD (e.g., 2020-01-01 or 2020 01 01)
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}\s\d{1,2}:\d{2}(:\d{2})?$', # Format: YYYY-MM-DD HH:MM or YYYY-MM-DD HH:MM:SS (e.g., 2020-01-01 12:30 or 2020-01-01 12:30:45)
+r'^\d{2}[-/]\d{2}[-/]\d{2}\s[APap][Mm]$',# Format: DD-MM-YY AM/PM (e.g., 31-12-20 PM)
+r'^\d{1,2}\s\w{3,9},\s\d{4}$',   # Format: DD Month, YYYY (e.g., 31 December, 2020)
+r'^\d{2}\s\w{3,9},\s\d{4}$', # Format: MM Month, YYYY (e.g., 12 December, 2020)
+r'^\d{1,2}-\w{3,9}-\d{4}$',  # Format: DD-Month-YYYY (e.g., 01-January-2020)
+r'^\d{1,2}-\w{3,9}-\d{2}$',  # Format: DD-Month-YY (e.g., 01-January-20)
+r'^\d{2}[-/]\d{2}[-/]\d{4}T\d{1,2}:\d{2}$',  # Format: MM-DD-YYYYTHH:MM or DD-MM-YYYYTHH:MM (e.g., 12-31-2020T12:30 or 31-12-2020T12:30)
+r'^\d{4}[-/]\d{1,2}[-/]\d{2}[\s,-]?\d{2}:\d{2}$',# Format: YYYY-MM-DD HH:MM (e.g., 2020-01-01 12:30)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}T\d{1,2}:\d{2}$',  # Format: DD-MM-YYYYTHH:MM (e.g., 31-12-2020T12:30)
+r'^\d{1,2}[-/]\d{2}[-/]\d{2}[\s,-]?\d{2}:\d{2}$',# Format: DD-MM-YY HH:MM or DD-MM-YYTHH:MM (e.g., 31-12-20 12:30 or 31-12-20T12:30)
+r'^\d{4}[-/]\d{2}[-/]\d{2}\s[APap][Mm]$',# Format: YYYY-MM-DD AM/PM (e.g., 2020-01-01 PM)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}T\d{2}:\d{2}(:\d{2})?$',  # Format: DD-MM-YYYYTHH:MM or DD-MM-YYYYTHH:MM:SS (e.g., 31-12-2020T12:30 or 31-12-2020T12:30:45)
+r'^\d{1,2}\s\w{3,9}\s\d{2}$', # Format: DD Month YY (e.g., 01 January 20)
+r'^\d{4}[-/]\d{2}[-/]\d{2}T\d{1,2}:\d{2}([:]\d{2})?(\s[APap][Mm])?$', # Format: YYYY-MM-DDTHH:MM or YYYY-MM-DDTHH:MM:SS AM/PM (e.g., 2020-01-01T12:30 or 2020-01-01T12:30:45 PM)
+r'^\d{4}-\d{1,2}-\d{2}\s\d{1,2}:\d{2}(\s[APap][Mm])$',  # Format: YYYY-MM-DD HH:MM AM/PM (e.g., 2020-01-01 12:30 PM)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{4}T\d{2}[:]\d{2}([:]\d{2})?$', # Format: DD-MM-YYYYTHH:MM or DD-MM-YYYYTHH:MM:SS (e.g., 31-12-2020T12:30 or 31-12-2020T12:30:45)
+r'^\d{2,4}-\d{2}-\d{2}$',   # Format: YYYY-MM-DD or YY-MM-DD (e.g., 2020-01-01 or 20-01-01)
+r'^\d{1,2}-\d{1,2}-\d{2,4}$',   # Format: MM-DD-YYYY or DD-MM-YYYY or MM-DD-YY (e.g., 12-31-2020 or 31-12-2020 or 12-31-20)
+r'^\d{2}\s\w{3,9},\s\d{4}$',# Format: DD Month, YYYY (e.g., 31 December, 2020)
+r'^\d{1,2}-\w{3,9}-\d{4}$', # Format: DD-Month-YYYY (e.g., 01-January-2020)
+r'^\d{2}[-/]\d{2}[-/]\d{4}\s\w{3,9}$', # Format: MM-DD-YYYY Month (e.g., 12-31-2020 January)
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}[-/]\d{2,4}$',   # Format: YYYY-MM-DD-YYYY or MM-DD-YY (e.g., 2020-01-01-2020 or 12-31-20)
+r'^\d{1,2}[-/]\d{2}[-/]\d{4}\s\d{1,2}:\d{2}(\s[APap][Mm])$',  # Format: DD-MM-YYYY HH:MM AM/PM (e.g., 31-12-2020 12:30 PM)
+r'^\d{1,2}\s\w{3,9}\s\d{4}$',  # Format: DD Month YYYY (e.g., 31 December 2020)
+r'^\d{2,4}[-/]\d{2}[-/]\d{1,2}$',   # Format: YYYY-MM-DD or YY-MM-DD (e.g., 2020-01-01 or 20-01-01)
+r'^\d{1,2}-\d{2}-\d{4}$',   # Format: DD-MM-YYYY or MM-DD-YYYY (e.g., 31-12-2020 or 12-31-2020)
+r'^\d{2}-\w{3,9}-\d{2}$',   # Format: DD-Month-YY (e.g., 31-December-20)
+r'^\d{1,2}\s\w{3,9}-\d{2,4}$',  # Format: DD Month-YYYY (e.g., 31 December-2020)
+r'^\d{1,2}[-/]\d{2}[-/]\d{4}$', # Format: DD-MM-YYYY (e.g., 31-12-2020)
+r'^\d{4}[-/]\d{2}[-/]\d{2}(\s\d{1,2}:\d{2}(:\d{2})?)?$'   # Format: YYYY-MM-DD HH:MM or YYYY-MM-DD HH:MM:SS (e.g., 2020-01-01 12:30 or 2020-01-01 12:30:45)
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',# Format: YYYY-MM-DD (e.g., 2020-12-31)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{2}$',  # Format: MM-DD-YY or DD-MM-YY (e.g., 12-31-20 or 31-12-20)
+r'^\d{2}[-/]\d{2}[-/]\d{4}$',  # Format: YY-MM-DD or DD-MM-YYYY (e.g., 20-12-2020 or 31-12-2020)
+r'^\d{1,2}\s\w{3,9},\s\d{4}$', # Format: DD Month, YYYY (e.g., 31 December, 2020)
+r'^\w{3,9}[-/]\d{1,2}[-/]\d{4}$',  # Format: Month-DD-YYYY (e.g., December-31-2020)
+r'^\d{1,2}[-/]\d{3,9}[-/]\d{4}$',  # Format: MM-Month-YYYY (e.g., 12-December-2020)
+r'^\d{1,2}-\d{1,2}-\d{4}(\s\d{1,2}:\d{2}(:\d{2})?)?$',# Format: DD-MM-YYYY HH:MM or DD-MM-YYYY HH:MM:SS (e.g., 31-12-2020 12:30 or 31-12-2020 12:30:45)
+r'^\d{1,2}\s\w{3,9}-\d{4}$',   # Format: DD Month-YYYY (e.g., 31 December-2020)
+r'^\d{1,2}-\w{3,9}-\d{4}$',# Format: DD-Month-YYYY (e.g., 31-December-2020)
+r'^\d{2,4}[-/]\d{1,2}[-/]\d{2,4}\s\d{1,2}:\d{2}(:\d{2})?$',  # Format: YYYY-MM-DD HH:MM or YYYY-MM-DD HH:MM:SS (e.g., 2020-12-31 12:30 or 2020-12-31 12:30:45)
+r'^\d{2,4}[-/]\d{1,2}[-/]\d{2}$',  # Format: YYYY-MM-DD (e.g., 2020-12-31)
+r'^\d{2}[-/]\d{2}[-/]\d{2,4}$',# Format: YY-MM-DD (e.g., 20-12-2020)
+r'^\d{4}-\d{2}-\d{2}$',# Format: YYYY-MM-DD (e.g., 2020-12-31)
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}\s\d{1,2}:\d{2}([:]\d{2})?$',  # Format: YYYY-MM-DD HH:MM or YYYY-MM-DD HH:MM:SS (e.g., 2020-12-31 12:30 or 2020-12-31 12:30:45)
+r'^\d{1,2}\s\w{3,9}\s\d{2}$',   # Format: DD Month YY (e.g., 31 December 20)
+r'^\d{1,2}\s\w{3,9}-\d{4}$',   # Format: DD Month-YYYY (e.g., 31 December-2020)
+r'^\w{3,9}[-/]\d{1,2}[-/]\d{4}$',  # Format: Month-DD-YYYY (e.g., December-31-2020)
+r'^\d{2}\s\w{3,9}-\d{4}$', # Format: DD-Month-YYYY (e.g., 31-December-2020)
+r'^\d{1,2}-\d{1,2}-\d{4}$',# Format: DD-MM-YYYY (e.g., 31-12-2020)
+r'^\d{1,2}\s\w{3,9},\s\d{4}$', # Format: DD Month, YYYY (e.g., 31 December, 2020)
+r'^\d{1,2}\s\w{3,9}\s\d{2}$',  # Format: DD Month YY (e.g., 31 December 20)
+r'^\d{1,2}[-/]\d{3,9}[-/]\d{4}$',  # Format: MM-Month-YYYY (e.g., 12-December-2020)
+r'^\d{1,2}-\w{3,9}-\d{4}$' # Format: DD-Month-YYYY (e.g., 31-December-2020)
+r'^\d{2}/\d{2}/\d{2}$',# Format: DD/MM/YY (e.g., 31/12/20)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{2,4}$', # Format: MM/DD/YY or DD/MM/YY (e.g., 12/31/2020 or 31/12/2020)
+r'^\d{4}[-/]\d{2}[-/]\d{1,2}\s\d{1,2}:\d{2}([:]\d{2})?$',  # Format: YYYY-MM-DD HH:MM or YYYY-MM-DD HH:MM:SS (e.g., 2020-12-31 12:30 or 2020-12-31 12:30:45)
+r'^\d{1,2}\s\w{3,9},\s\d{4}$',  # Format: DD Month, YYYY (e.g., 31 December, 2020)
+r'^\w{3,9}\s\d{1,2},\s\d{4}$',  # Format: Month DD, YYYY (e.g., December 31, 2020)
+r'^\d{1,2}\s\w{3,9}[-/]\d{4}$', # Format: DD-Month-YYYY or DD Month/YYYY (e.g., 31-December-2020 or 31 December/2020)
+r'^\d{1,2}[-/]\w{3,9}[-/]\d{4}$',   # Format: MM-Month-YYYY or Month-DD-YYYY (e.g., 12-December-2020 or December-31-2020)
+r'^\d{1,2}\s\w{3,9}[-/]\d{4}$', # Format: DD Month/YYYY (e.g., 31 December/2020)
+r'^\d{4}-\d{2}-\d{2}$', # Format: YYYY-MM-DD (e.g., 2020-12-31)
+r'^\d{2}[-/]\d{1,2}[-/]\d{2}$', # Format: YY-MM-DD (e.g., 20-12-31)
+r'^\d{4}-\d{2}-\d{1,2}$',# Format: YYYY-MM-DD (e.g., 2020-12-31)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{2}$',   # Format: DD-MM-YY or MM-DD-YY (e.g., 12-31-20 or 31-12-20)
+r'^\d{4}[-/]\d{1,2}[-/]\d{1,2}$',   # Format: YYYY-MM-DD (e.g., 2020-12-31)
+r'^\d{1,2}-\d{1,2}-\d{4}(\s\d{1,2}:\d{2}(:\d{2})?)?$', # Format: DD-MM-YYYY HH:MM or DD-MM-YYYY HH:MM:SS (e.g., 31-12-2020 12:30 or 31-12-2020 12:30:45)
+r'^\d{2}-\d{2}-\d{4}$', # Format: DD-MM-YYYY (e.g., 31-12-2020)
+r'^\d{4}/\d{2}/\d{2}$', # Format: YYYY/MM/DD (e.g., 2020/12/31)
+r'^\d{4}[-/]\d{1,2}[-/]\d{2}$', # Format: YYYY-MM-DD (e.g., 2020-12-31)
+r'^\d{1,2}\s\w{3,9},\s\d{4}$',  # Format: DD Month, YYYY (e.g., 31 December, 2020)
+r'^\w{3,9}-\d{1,2}-\d{4}$', # Format: Month-DD-YYYY (e.g., December-31-2020)
+r'^\d{1,2}\s\w{3,9}[-/]\d{4}$', # Format: DD-Month-YYYY (e.g., 31-December-2020)
+r'^\d{2}-\d{2}-\d{4}$', # Format: DD-MM-YYYY (e.g., 31-12-2020)
+r'^\d{2}\s\w{3}\s\d{2}$',# Format: DD MMM YY (e.g., 01 Jan 20)
+r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$',# Format: YYYY-MM-DDTHH:MM:SS (e.g., 2020-01-01T12:30:45)
+r'^\d{2}\/\d{2}\/\d{4}$',# Format: DD/MM/YYYY (e.g., 01/01/2020)
+r'^\d{1,2}[\s,]*\w{3,9}[\s,]*\d{4}$',# Format: DD Month YYYY (with spaces/comma separators)
+r'^\d{4}-\d{1,2}$',  # Format: YYYY-M (e.g., 2020-1)
+r'^\d{1,2}[\s-]\w{3}[\s-]\d{4}$',# Format: DD-MMM-YYYY or DD MMM YYYY (e.g., 01-Jan-2020)
+r'^\d{1,2}[-/]\d{4}$',   # Format: DD/YYYY or MM/YYYY (e.g., 01/2020)
+r'^\d{2}-\d{2}-\d{2}$',  # Format: DD-MM-YY (e.g., 01-01-20)
+r'^\d{4}-\d{3}$',# Format: YYYY-DDD (Julian date, e.g., 2020-001)
+r'^\d{1,2}-\d{1,2}-\d{1,4}$',# Format: DD-MM-YYYY or MM-DD-YYYY (e.g., 01-01-2020 or 01-01-20)
+r'^\d{4}[\s/]\d{1,2}[\s/]\d{1,2}$',  # Format: YYYY/MM/DD or YYYY-MM-DD with spaces (e.g., 2020/01/01)
+r'^\d{1,2}[\s/]\d{1,2}[\s/]\d{4}$',  # Format: DD/MM/YYYY or MM/DD/YYYY (e.g., 01/01/2020)
+r'^\d{1,2}[\s/]\d{2}[-/]\d{2}$', # Format: DD/MM/YY (e.g., 01/01/20)
+r'^\d{1,2}[\s/]\w{3,9}[\s/]\d{4}$',  # Format: DD Month YYYY (e.g., 01 January 2020)
+r'^\d{2}.\d{2}.\d{4}$',  # Format: DD.MM.YYYY (e.g., 01.01.2020)
+r'^\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$',# Format: DD-MM-YYTHH:MM:SS (e.g., 01-01-20T12:30:45)
+r'^\d{2}/\d{2}/\d{4}$',  # Format: MM/DD/YYYY (e.g., 01/01/2020)
+r'^\d{4}-\d{2}-\d{2}[\s,]*\d{2}:\d{2}$', # Format: YYYY-MM-DD HH:MM (e.g., 2020-01-01 12:30)
+r'^\d{1,2}[\s,]*\d{2}[-/]\d{4}$',# Format: DD-MM-YYYY or MM-DD-YYYY (e.g., 01-01-2020 or 01/01/2020)
+r'^\d{4}[-/]\d{2}[-/]\d{2}[\s]*T\d{2}:\d{2}:\d{2}$', # Format: YYYY-MM-DDTHH:MM:SS (e.g., 2020-01-01T12:30:45)
+r'^\d{1,2}[-/]\d{1,2}[-/]\d{1,4}$',  # Format: DD/MM/YYYY or MM/DD/YYYY or DD/MM/YY (e.g., 01/01/2020 or 01/01/20)
+r'^\d{1,2} \w{3}$',  # Format: DD MMM (e.g., 01 Jan)
+r'^\d{4}-\d{3}-\d{1,2}$',# Format: YYYY-DDD-MM (Julian Date with month, e.g., 2020-001-01)
+r'^\d{1,2}[-/]\d{1,2}[\s/-]?\d{1,4}$',# Format: DD/MM/YYYY or DD-MM-YY (e.g., 01/01/2020 or 01-01-20)
+r'^\d{1,2}[-/]\d{2}[-/]\d{4}$',  # Format: DD-MM-YYYY or MM-DD-YYYY (e.g., 01-01-2020)
+r'^\d{2}/\d{1,2}/\d{4}$',# Format: DD/MM/YYYY or MM/DD/YYYY (e.g., 01/01/2020 or 01/01/2020)
+r'^\+1 \d{3} \d{3} \d{4}$',  # US Phone Format
+r'^\+44 \d{2} \d{4} \d{4}$',  # UK Phone Format
+r'^\+91 \d{5} \d{5}$',# India Phone Format
+r'^\+55 \d{2} \d{4} \d{4}$',  # Brazil Phone Format
+r'^\+1 \d{3} \d{3} \d{4}$',   # Canada Phone Format
+r'^\+61 \d{1} \d{4} \d{4}$',  # Australia Phone Format
+r'^\+33 \d{1} \d{2} \d{2} \d{2} \d{2}$',  # France Phone Format
+r'^\+49 \d{2} \d{7}$',# Germany Phone Format
+r'^\+81 \d{2} \d{4} \d{4}$',  # Japan Phone Format
+r'^\+86 \d{3} \d{4} \d{4}$',  # China Phone Format
+r'^\+52 1 \d{2} \d{4} \d{4}$',  # Mexico Phone Format
+r'^\+27 \d{2} \d{3} \d{4}$',  # South Africa Phone Format
+r'^\+7 \d{3} \d{3} \d{4}$',   # Russia Phone Format
+r'^\+39 \d{2} \d{7}$',# Italy Phone Format
+r'^\+34 \d{3} \d{3} \d{3}$',  # Spain Phone Format
+r'^\+54 9 \d{2} \d{4} \d{4}$',  # Argentina Phone Format
+r'^\+57 \d{1} \d{3} \d{4}$',  # Colombia Phone Format
+r'^\+56 \d{1} \d{7}$',# Chile Phone Format
+r'^\+51 \d{1} \d{7}$',# Peru Phone Format
+r'^\+20 \d{1} \d{8}$',# Egypt Phone Format
+r'^\+966 \d{2} \d{3} \d{4}$',  # Saudi Arabia Phone Format
+r'^\+971 \d{1} \d{7}$',   # UAE Phone Format
+r'^\+62 \d{2} \d{4} \d{4}$',  # Indonesia Phone Format
+r'^\+60 \d{1} \d{4} \d{4}$',  # Malaysia Phone Format
+r'^\+65 \d{4} \d{4}$',# Singapore Phone Format
+r'^\+82 \d{2} \d{4} \d{4}$',  # South Korea Phone Format
+r'^\+66 \d{1} \d{3} \d{4}$',  # Thailand Phone Format
+r'^\+90 \d{3} \d{3} \d{4}$',  # Turkey Phone Format
+r'^\+234 \d{1} \d{3} \d{4}$',  # Nigeria Phone Format (Format 1)
+r'^\+254 \d{2} \d{3} \d{4}$',  # Kenya Phone Format
+r'^\+212 \d{1} \d{2} \d{3} \d{3}$',  # Morocco Phone Format
+r'^\+234 \d{3} \d{3} \d{4}$',  # Nigeria Phone Format (Format 2)
+r'^\+92 \d{3} \d{3} \d{4}$',  # Pakistan Phone Format 
+r'^\+63 \d{3} \d{3} \d{4}$',  # Philippines Phone Format
+r'^\+84 \d{2} \d{4} \d{4}$',  # Vietnam Phone Format
+r'^\+880 \d{1} \d{3} \d{3} \d{3}$',  # Bangladesh Phone Format
+r'^\+20 \d{1} \d{3} \d{4}$',  # Egypt Phone Format
+r'^\+213 \d{2} \d{3} \d{4}$',  # Algeria Phone Format
+r'^\+216 \d{2} \d{3} \d{3}$',  # Tunisia Phone Format
+r'^\+972 \d{1} \d{3} \d{4}$',  # Israel Phone Format
+r'^\+54 9 \d{2} \d{4} \d{4}$',  # Argentina Phone Format
+r'^\+55 \d{2} \d{4} \d{4}$',  # Brazil Phone Format
+r'^\+56 9 \d{4} \d{4}$',  # Chile Phone Format
+r'^\+52 \d{2} \d{4} \d{4}$',  # Mexico Phone Format
+r'^\+51 \d{1} \d{3} \d{4}$',  # Peru Phone Format
+r'^\+57 \d{1} \d{3} \d{4}$',  # Colombia Phone Format
+r'^\+58 \d{3} \d{3} \d{4}$',  # Venezuela Phone Format
+r'^\+598 \d{1} \d{3} \d{4}$',  # Uruguay Phone Format
+r'^\+593 \d{1} \d{3} \d{4}$',  # Ecuador Phone Format
+r'^\+591 \d{1} \d{3} \d{4}$',  # Bolivia Phone Format
+r'^\+595 \d{2} \d{3} \d{4}$',  # Paraguay Phone Format
+r'^\+502 \d{1} \d{3} \d{4}$',  # Guatemala Phone Format
+r'^\+503 \d{1} \d{3} \d{4}$',  # El Salvador Phone Format
+r'^\+504 \d{1} \d{3} \d{4}$',  # Honduras Phone Format
+r'^\+506 \d{1} \d{3} \d{4}$',  # Costa Rica Phone Format
+r'^\+505 \d{1} \d{3} \d{4}$',  # Nicaragua Phone Format
+r'^\+507 \d{1} \d{3} \d{4}$',  # Panama Phone Format
+r'^\+1 \d{3} \d{3} \d{4}$',  # Dominican Republic Phone Format
+r'^\+1 \d{3} \d{3} \d{4}$',  # Jamaica Phone Format
+r'^\+509 \d{1} \d{3} \d{4}$',  # Haiti Phone Format
+r'^\+1 \d{3} \d{3} \d{4}$',  # Trinidad and Tobago Phone Format
+r'^\+1 \d{3} \d{3} \d{4}$',  # Barbados Phone Format
+r'^\+1 \d{3} \d{3} \d{4}$',  # St. Lucia Phone Format
+r'^\+1 \d{3} \d{3} \d{4}$',  # St. Vincent and the Grenadines Phone Format
+r'^\+1 \d{3} \d{3} \d{4}$',  # Antigua and Barbuda Phone Format
+r'^\+45 \d{1} \d{3} \d{4}$',  # Denmark Phone Format
+r'^\+354 \d{1} \d{3} \d{4}$',  # Iceland Phone Format
+r'^\+31 \d{1} \d{3} \d{4}$',  # Netherlands Phone Format
+r'^\+32 \d{1} \d{3} \d{4}$',  # Belgium Phone Format
+r'^\+352 \d{1} \d{3} \d{4}$',  # Luxembourg Phone Format
+r'^\+41 \d{1} \d{3} \d{4}$',  # Switzerland Phone Format
+r'^\+43 \d{1} \d{3} \d{4}$',  # Austria Phone Format
+r'^\+423 \d{1} \d{3} \d{4}$',  # Liechtenstein Phone Format
+r'^\+377 \d{1} \d{3} \d{4}$',  # Monaco Phone Format
+r'^\+378 \d{1} \d{3} \d{4}$',  # San Marino Phone Format
+r'^\+39 \d{1} \d{3} \d{4}$',   # Vatican City Phone Format
+r'^\+356 \d{1} \d{3} \d{4}$',  # Malta Phone Format
+r'^\+353 \d{1} \d{3} \d{4}$',  # Ireland Phone Format
+r'^\+44 \d{1} \d{3} \d{4}$',   # United Kingdom Phone Format
+r'^\+33 \d{1} \d{3} \d{4}$',   # France Phone Format
+r'^\+34 \d{1} \d{3} \d{4}$',   # Spain Phone Format
+r'^\+39 \d{1} \d{3} \d{4}$',   # Italy Phone Format
+r'^\+351 \d{1} \d{3} \d{4}$',  # Portugal Phone Format
+r'^\+41 \d{1} \d{3} \d{4}$',   # Switzerland Phone Format (Duplicate)
+r'^\+43 \d{1} \d{3} \d{4}$',   # Austria Phone Format (Duplicate)
+r'^\+30 \d{1} \d{3} \d{4}$',   # Greece Phone Format
+r'^\+357 \d{1} \d{3} \d{4}$',  # Cyprus Phone Format
+r'^\+90 \d{1} \d{3} \d{4}$',   # Turkey Phone Format
+r'^\+7 \d{1} \d{3} \d{4}$',# Russia Phone Format
+r'^\+375 \d{2} \d{3} \d{4}$',  # Belarus Phone Format
+r'^\+380 \d{1} \d{3} \d{4}$',  # Ukraine Phone Format
+r'^\+48 \d{1} \d{3} \d{4}$',   # Poland Phone Format
+r'^\+420 \d{1} \d{3} \d{4}$',  # Czech Republic Phone Format
+r'^\+421 \d{1} \d{3} \d{4}$',  # Slovakia Phone Format
+r'^\+36 \d{2} \d{3} \d{4}$',   # Hungary Phone Format
+r'^\+40 \d{1} \d{3} \d{4}$',   # Romania Phone Format
+r'^\+359 \d{1} \d{3} \d{4}$',  # Bulgaria Phone Format
+r'^\+381 \d{1} \d{3} \d{4}$'   # Serbia Phone Format
+r'^\d{3}-\d{3}-\d{4}$',  # Generic Phone Format with hyphen: 123-456-7890
+r'^\d{3} \d{3} \d{4}$',  # Generic Phone Format with space: 123 456 7890
+r'^\d{3}\.\d{3}\.\d{4}$',  # Generic Phone Format with dots: 123.456.7890
+r'^\(\d{3}\) \d{3}-\d{4}$',  # Generic Phone Format with parentheses: (123) 456-7890
+r'^\(\d{3}\) \d{3}\.\d{4}$',  # Generic Phone Format with mixed separators: (123) 456.7890
+r'^\+\d{3} \d{3} \d{3} \d{4}$',  # International Phone Format with spaces: +123 456 789 0123
+r'^\+\d{3}-\d{3}-\d{3}-\d{4}$',  # International Phone Format with hyphens: +123-456-789-0123
+r'^\d{3}-\d{3}-\d{4} ext\.\s?\d{1,4}$',  # Phone number with extension: 123-456-7890 ext. 1234
+r'^\d{3}-\d{3}-\d{4} x\d{1,4}$',  # Phone number with "x" as extension: 123-456-7890 x1234
+r'^\d{3}\.\d{3}\.\d{4} x\d{1,4}$',  # Phone number with dots and extension: 123.456.7890 x1234
+r'^\(\d{3}\) \d{3}\.\d{4} x\d{1,4}$',  # Phone number with parentheses, dots, and extension: (123) 456.7890 x1234
+r'^\+\d{3} \d{3} \d{3} \d{4} ext\.\s?\d{1,4}$',  # International format with spaces and extension: +123 456 789 0123 ext. 1234
+r'^\+\d{3}-\d{3}-\d{3}-\d{4} ext\.\s?\d{1,4}$',  # International format with hyphens and extension: +123-456-789-0123 ext. 1234
+r'^\+\d{1,3} \d{3} \d{3} \d{4}$',  # Phone number with country code and space-separated: +1 123 456 7890
+r'^\+\d{1,3} \(\d{3}\) \d{3}-\d{4}$',  # Phone number with parentheses and country code: +1 (123) 456-7890
+r'^\d{3}\.\d{3} \d{4}$',  # Phone number with dots and spaces: 123.456 7890
+r'^\+\d{3}-\d{3}\.\d{3}-\d{4}$',  # Phone number with dashes, dots, and country code: +123-456.789-0123
+r'^\+\d{1,3}-\d{3} \d{3} \d{4}$',  # Phone number with hyphen, space, and country code: +1-123 456 7890
+r'^\d{3}-\d{3}-\d{4} ext\.\s?\d{1,4} ext\.\s?\d{1,4}$',  # Phone number with multiple extensions: 123-456-7890 ext. 1234 ext. 5678
+r'^\(\d{3}\) \d{3}\.\d{4} - ext\.\s?\d{1,4}$'  # Phone number with multiple separators: (123) 456.7890 - ext. 1234
+r'^\d{3}-\d{3}-\d{4}$',  # 123-456-7890
+r'^\d{3} \d{3} \d{4}$',  # 123 456 7890
+r'^\d{3}\.\d{3}\.\d{4}$',  # 123.456.7890
+r'^\(\d{3}\) \d{3}-\d{4}$',  # (123) 456-7890
+r'^\(\d{3}\) \d{3}\.\d{4}$',  # (123) 456.7890
+r'^\+\d{3} \d{3} \d{3} \d{4}$',  # +123 456 789 0123
+r'^\+\d{3}-\d{3}-\d{3}-\d{4}$',  # +123-456-789-0123
+r'^\d{3}-\d{3}-\d{4} ext\.\s?\d{1,4}$',  # 123-456-7890 ext. 1234
+r'^\d{3}-\d{3}-\d{4} x\d{1,4}$',  # 123-456-7890 x1234
+r'^\d{3}\.\d{3}\.\d{4} x\d{1,4}$',  # 123.456.7890 x1234
+r'^\(\d{3}\) \d{3}\.\d{4} x\d{1,4}$',  # (123) 456.7890 x1234
+r'^\+\d{3} \d{3} \d{3} \d{4} ext\.\s?\d{1,4}$',  # +123 456 789 0123 ext. 1234
+r'^\+\d{3}-\d{3}-\d{3}-\d{4} ext\.\s?\d{1,4}$',  # +123-456-789-0123 ext. 1234
+r'^\+\d{1,3} \d{3} \d{3} \d{4}$',  # +1 123 456 7890
+r'^\+\d{1,3} \(\d{3}\) \d{3}-\d{4}$',  # +1 (123) 456-7890
+r'^\d{3}\.\d{3} \d{4}$',  # 123.456 7890
+r'^\+\d{3}-\d{3}\.\d{3}-\d{4}$',  # +123-456.789-0123
+r'^\+\d{1,3}-\d{3} \d{3} \d{4}$',  # +1-123 456 7890
+r'^\d{3}-\d{3}-\d{4} ext\.\s?\d{1,4} ext\.\s?\d{1,4}$',  # 123-456-7890 ext. 1234 ext. 5678
+r'^\(\d{3}\) \d{3}\.\d{4} - ext\.\s?\d{1,4}$',  # (123) 456.7890 - ext. 1234
+r'^\d{3}-\d{4}-\d{4}$',  # 123-4567-8901
+r'^\d{3} \d{4} \d{4}$',  # 123 4567 8901
+r'^\(\d{4}\) \d{3}-\d{4}$',  # (1234) 567-8901
+r'^\(\d{4}\) \d{3}\.\d{4}$',  # (1234) 567.8901
+r'^\+\d{2} \(\d{3}\) \d{3}-\d{4}$',  # +12 (123) 456-7890
+r'^\+\d{2}-\d{3}-\d{3}-\d{4}$',  # +12-345-678-9012
+r'^\(\d{3}\) \d{3}-\d{4} ext\.\s?\d{1,4}$',  # (123) 456-7890 ext. 1234
+r'^\d{3} \(\d{3}\) \d{3}-\d{4}$',  # 123 (123) 456-7890
+r'^\(\d{3}\) \(\d{3}\) \d{3}-\d{4}$',  # (123) (123) 456-7890
+r'^\d{3}-\d{2}-\d{2}-\d{4}$',  # 123-45-67-8901
+r'^\(\d{3}\) \d{2}-\d{2}-\d{4}$',  # (123) 45-67-8901
+r'^\d{3}\.\d{3}\.\d{2}-\d{4}$',  # 123.456.78-8901
+r'^\d{10}$',  # 1234567890 (10 digits)
+r'^\+?\d{1,4} \d{1,4} \d{1,4} \d{4}$',  # +123 4567 8901
+r'^\+\d{1,4} \(\d{1,4}\) \d{3}-\d{4}$',  # +123 (1234) 567-8901
+r'^\d{4}-\d{3}-\d{4}$',  # 1234-567-8901
+r'^\d{4} \d{3} \d{4}$',  # 1234 567 8901
+r'^\(\d{2,4}\) \d{2,4}-\d{4}$',  # (1234) 5678-8901
+r'^\d{2,4}-\d{2,4}-\d{4}$',  # 1234-5678-8901
+r'^\(\d{3}\) \d{3}\-\d{4} x\d{1,4}$',  # (123) 456-7890 x1234
+r'^\(\d{3}\) \d{3}\.\d{4} ext\.\s?\d{1,4}$',  # (123) 456.7890 ext. 1234
+r'^\d{2}-\d{3}-\d{4}$',  # 12-345-6789
+r'^\+\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # +123 4567 8901, +123-4567-8901, +123.4567.8901
+r'^\(\d{2}\) \d{3}-\d{4}$',  # (12) 345-6789
+r'^\d{3}[-.\s]?\d{2}[-.\s]?\d{3}$',  # 123-45-678, 123.45.678, 123 45 678
+r'^\+?\d{1,4}-\d{3}-\d{4}$',  # +123-456-7890
+r'^\d{3} \d{4} \d{3}$',  # 123 4567 890
+r'^\d{3}\s?\d{2}\s?\d{4}$',  # 123 45 6789
+r'^\d{4}[-.\s]?\d{4}$',  # 1234-5678, 1234.5678, 1234 5678
+r'^\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,4}$',  # 123-456-7890, 1234-5678-9012
+r'^\+\d{1,3}[-.\s]?\(\d{1,4}\)[-.\s]?\d{3}[-.\s]?\d{4}$',  # +12 (1234) 567-8901
+r'^\(\d{3}\) \d{3}[-.\s]?\d{4}$',  # (123) 456-7890, (123) 456 7890
+r'^\d{3}[-.\s]?\d{4}[-.\s]?\d{3}$',  # 123-4567-890, 123.4567.890
+r'^\+?\d{3}[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +123 45 678 9012, +123-45-678-9012
+r'^\+\d{1,2}-\d{3}-\d{3}-\d{4}$',  # +12-345-678-9012
+r'^\d{1,3}\(\d{2,3}\)\d{3}-\d{4}$',  # 123(45)678-9012
+r'^\d{2,4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 1234-567-8901
+r'^\(\d{2,3}\) \d{3}[-.\s]?\d{4}$',  # (123) 456-7890
+r'^\(\d{1,4}\) \d{1,4}[-.\s]?\d{4}$',  # (1234) 5678-9012
+r'^\+\d{1,4}[-.\s]?\(\d{2,4}\)[-.\s]?\d{3}[-.\s]?\d{4}$',  # +123 (1234) 567-8901
+r'^\d{3}\(\d{3}\)-\d{4}$',  # 123(123)-4567
+r'^\d{4}-\d{4}-\d{4}$',  # 1234-5678-9012
+r'^\(\d{2}\)-\d{3}-\d{4}$',  # (12)-345-6789
+r'^\d{3}\-\d{2}\-\d{3}$',  # 123-45-678
+r'^\d{3}\.\d{3}\.\d{4}$',  # 123.456.7890
+r'^\d{3} \d{3} \d{4}$',  # 123 456 7890
+r'^\+\d{1,3}\s?\d{1,4}-\d{4}-\d{4}$',  # +123 4567-8901-2345
+r'^\d{1,4}-\d{2,4}-\d{4}$',  # 1234-5678-9012
+r'^\(\d{1,4}\)-\d{3}-\d{4}$',  # (1234)-567-8901
+r'^\+\d{1,4}\s?\d{2}-\d{3}-\d{4}$',  # +123 45-678-9012
+r'^\(\d{1,3}\)\s?\d{3}-\d{4}$',  # (123) 456-7890
+r'^\d{2,4}\s?[-.\s]?\d{3}[-.\s]?\d{4}$',  # 1234-567 8901 or 1234 567.8901
+r'^\d{4}-\d{3}-\d{4}$',  # 1234-567-8901
+r'^\+\d{1,3}\s?\(\d{1,4}\)\s?\d{1,4}[-.\s]?\d{4}$',  # +123 (1234) 5678 9012
+r'^\d{3}-\d{4}-\d{4}$',  # 123-4567-8901
+r'^\d{3}\s?\(\d{3}\)\s?\d{4}$',  # 123 (123) 4567
+r'^\(\d{3}\)\d{3}[-.\s]?\d{4}$',  # (123)456-7890 or (123)456 7890
+r'^\+\d{2,4}[-.\s]?\(\d{1,3}\)[-.\s]?\d{3}[-.\s]?\d{4}$',  # +123 (123) 456-7890
+r'^\d{4}[-.\s]?\d{2,4}[-.\s]?\d{3}$',  # 1234 5678 901
+r'^\(\d{3}\) \d{3}\.\d{4}$',  # (123) 456.7890
+r'^\+\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +123-4567-8901-2345
+r'^\d{3}[-.\s]?\d{2}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 123-45-67-8901
+r'^\(\d{2,3}\)\s?\d{3}[-.\s]?\d{4}$',  # (123) 456-7890
+r'^\d{2}-\d{2}-\d{4}$',  # 12-34-5678
+r'^\d{4}[-.\s]?\d{4}$',  # 1234-5678
+r'^\(\d{2}\) \d{3}[-.\s]?\d{4}$',  # (12) 345-6789
+r'^\d{1,4}[-.\s]?\(\d{1,4}\)[-.\s]?\d{4}$',  # 1234 (1234) 5678
+r'^\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123-456-7890 or 123.456.7890
+r'^\d{4}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 1234-5678-9012
+r'^\d{2,4}[-.\s]?\d{2,4}[-.\s]?\d{4}$',  # 1234 5678 9012
+r'^\d{3}[-.\s]?\d{2,3}[-.\s]?\d{4}$',  # 123-45-6789 or 123.456-7890
+r'^\+\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # +123 4567 8901
+r'^\d{3}-\d{2}-\d{3}$',  # 123-45-678
+r'^\(\d{3}\)-\d{2,3}[-.\s]?\d{4}$',  # (123)-45-6789 or (123)-456 7890
+r'^\d{4}[-.\s]?\d{3}[-.\s]?\d{3}$',  # 1234-567-890 or 1234 567 890
+r'^\(\d{2,3}\)\s?\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (123) 456 789 0123
+r'^\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-345 6789
+r'^\d{2,4}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 1234 56 7890 or 123 45 6789
+r'^\d{1,3}[-.\s]?\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123-45-678 9012
+r'^\+\d{1,4}[-.\s]?\(\d{2,4}\)[-.\s]?\d{3}[-.\s]?\d{4}$',  # +123 (1234) 567 8901
+r'^\(\d{2,3}\)[-.\s]?\d{3}[-.\s]?\d{4}$',  # (123) 456-7890 or (123) 456.7890
+r'^\+\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{2}[-.\s]?\d{3}$',  # +123 4567 89 012
+r'^\d{2,3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123-4567 8901
+r'^\d{2,3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123 456 7890 or 123.456 7890
+r'^\+\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{2,3}[-.\s]?\d{4}$',  # +123 4567 89 012
+r'^\d{4}[-.\s]?\d{4}[-.\s]?\d{3}$',  # 1234-5678 901 or 1234 5678 901
+r'^\(\d{1,3}\)[-\s]?\d{3}[-.\s]?\d{4}$',  # (123)-456-7890 or (123) 456 7890
+r'^\(\d{3}\)\d{3}[-.\s]?\d{4}$',  # (123)456-7890 or (123)456 7890
+r'^\d{1,4}[-.\s]?\d{1,3}[-.\s]?\d{4}$',  # 1234-567 890 or 123 456 7890
+r'^\d{4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 1234 567 8901 or 1234-567-8901
+r'^\d{3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123 4567 8901 or 123-4567 8901
+r'^\(\d{3}\)[\s.-]?\d{3}[-.\s]?\d{4}$',  # (123) 456 7890 or (123)-456-7890
+r'^\+\d{1,4}[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +123 456 789 0123
+r'^\d{1,4}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 1234 56 7890 or 123 45 6789
+r'^\d{2,4}[-.\s]?\(\d{1,3}\)[-.\s]?\d{4}$',  # 1234 (123) 5678
+r'^\d{1,2}[-.\s]?\d{2,3}[-.\s]?\d{4}$',  # 12-345 6789 or 123 456 7890
+r'^\d{3}[-.\s]?\(\d{3}\)[-.\s]?\d{4}$',  # 123-(123) 456-7890
+r'^\(\d{1,4}\)[-\s]?\d{3}[-.\s]?\d{4}$',  # (1234) 567-8901 or (1234)-567 8901
+r'^\(\d{1,4}\)[-\s]?\d{1,4}[-.\s]?\d{3}$',  # (1234) 5678-901 or (1234)-5678 901
+r'^\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}[-.\s]?\d{3}$',  # 123-456-789 012
+r'^\d{1,4}[-.\s]?\d{4}[-.\s]?\d{3}$',  # 1234-5678 901 or 1234 5678 901
+r'^\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123-456-7890 or 123 456 7890
+r'^\(\d{2,3}\)[-.\s]?\d{3}[-.\s]?\d{4}$',  # (123) 456 7890 or (123)-456-7890
+r'^\+\d{1,3}[-.\s]?\(\d{1,3}\)[-.\s]?\d{4}$',  # +123 (123) 456-7890
+r'^\+\d{1,4}[-.\s]?\d{4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +123 4567 890 1234
+r'^\d{1,2}[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-34 567 8901
+r'^\d{4}[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 1234-567 890-1234
+r'^\(\d{3}\)[-.\s]?\d{4}[-.\s]?\d{4}$',  # (123) 4567 8901
+r'^\d{1,5}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12345 678 9012 or 123 456 7890
+r'^\(\d{1,4}\)[-\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (1234)-567-8901 or (123)-456-789 012
+r'^\d{2}[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-345 678 9012
+r'^\+\d{1,4}[-.\s]?\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # +123 456 78 9012
+r'^\d{1,3}[-.\s]?\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123-45-6789 0123
+r'^\+\d{1,5}[-.\s]?\(\d{1,4}\)[-.\s]?\d{3}[-.\s]?\d{4}$',  # +12345 (1234) 567 8901
+r'^\d{2,3}[-.\s]?\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123-45-6789 0123
+r'^\d{3}[-.\s]?\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123-45-6789 0123
+r'^\(\d{2}\)[-.\s]?\d{3}[-.\s]?\d{4}$',  # (12) 345 6789
+r'^\(\d{3}\)[-.\s]?\d{3}[-.\s]?\d{4}$',  # (123) 456 7890
+r'^\d{1,3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123-4567 8901
+r'^\(\d{3}\)[\s.-]?\d{4}[-.\s]?\d{4}$',  # (123) 456-7890 or (123) 456 7890
+r'^\+\d{1,4}[-.\s]?\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +123 45 6789 0123
+r'^\d{3}[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123-45-678 9012
+r'^\+\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +123 4567 8901 2345
+r'^\d{2,3}[-.\s]?\(\d{2,3}\)[-.\s]?\d{4}$',  # 123 (123) 4567
+r'^\+\d{1,3}[-.\s]?\d{2,3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +123 456 7890 1234
+r'^\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # 1234-5678-9012 or 1234 5678 9012
+r'^\(0\)\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # (0)1234-5678-9012 or (0)1234 5678 9012
+r'^0\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 012-345-6789 or 012 345 6789
+r'^0\d{3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 0123-4567-8901 or 0123 4567 8901
+r'^0\d{4}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 01234-5678-9012 or 01234 5678 9012
+r'^\+0\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # +01234-5678-9012 or +01234 5678 9012
+r'^\(0\)\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # (0)123 45 6789 or (0)123-45-6789
+r'^\+0\d{1,2}[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +012 34 567 8901
+r'^\d{2}[-.\s]?0\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-034 567 8901
+r'^0\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # 012-3456-7890 or 012 3456 7890
+r'^0\d{1,2}[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 01-234 567 8901 or 01 234 567 8901
+r'^\(0\)\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)12-345 6789 or (0)12 345 6789
+r'^\+0\d{1,4}[-.\s]?\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +01234 5678 9012 3456
+r'^\d{0,3}[-.\s]?0\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 012-3456-7890 or 0 12 3456 7890
+r'^\+0\d{1,4}[-.\s]?\d{4}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +012345 6789 0123 4567
+r'^\d{1,4}[-.\s]?\(0\)\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 1234 (0)12-345 6789
+r'^\+0\d{1,2}[-.\s]?\d{4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +012 3456 789 0123
+r'^\(0\)\d{3}[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)123 45 678 9012
+r'^\d{1,3}[-.\s]?\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123-45-6789 0123
+r'^\+0\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +012 345 6789
+r'^\+0\d{1,3}[-.\s]?\d{1,3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +012 345 6789 0123
+r'^\(0\)\d{1,3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # (0)123-4567-8901 or (0)123 4567 8901
+r'^\d{2}[-.\s]?0\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-034 567 8901
+r'^\+0\d{1,4}[-.\s]?\d{2,3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +01234 567 8901
+r'^\+0\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +012 345 6789 0123
+r'^\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # 1234-5678-9012 or 1234 5678 9012
+r'^\(0\)\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # (0)1234-5678-9012 or (0)1234 5678 9012
+r'^0\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 012-345-6789 or 012 345 6789
+r'^0\d{3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 0123-4567-8901 or 0123 4567 8901
+r'^0\d{4}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 01234-5678-9012 or 01234 5678 9012
+r'^\+0\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # +01234-5678-9012 or +01234 5678 9012
+r'^\(0\)\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # (0)123 45 6789 or (0)123-45-6789
+r'^\+0\d{1,2}[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +012 34 567 8901
+r'^\d{2}[-.\s]?0\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-034 567 8901
+r'^0\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # 012-3456-7890 or 012 3456 7890
+r'^0\d{1,2}[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 01-234 567 8901 or 01 234 567 8901
+r'^\(0\)\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)12-345 6789 or (0)12 345 6789
+r'^\+0\d{1,4}[-.\s]?\d{4}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +01234 5678 9012 3456
+r'^\d{0,3}[-.\s]?0\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 012-3456-7890 or 0 12 3456 7890
+r'^\+0\d{1,4}[-.\s]?\d{4}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +012345 6789 0123 4567
+r'^\d{1,4}[-.\s]?\(0\)\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 1234 (0)12-345 6789
+r'^\+0\d{1,2}[-.\s]?\d{4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +012 3456 789 0123
+r'^\(0\)\d{3}[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)123 45 678 9012
+r'^\d{1,3}[-.\s]?\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123-45-6789 0123
+r'^\+0\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +012 345 6789
+r'^\+0\d{1,3}[-.\s]?\d{1,3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +012 345 6789 0123
+r'^\(0\)\d{1,3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # (0)123-4567-8901 or (0)123 4567 8901
+r'^\d{2}[-.\s]?0\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-034 567 8901
+r'^\+0\d{1,4}[-.\s]?\d{2,3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +01234 567 8901
+r'^\+0\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +012 345 6789 0123
+r'^\d{0,3}[-.\s]?\d{1,4}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123-45-6789 0123 4567
+r'^\(0\)\d{1,2}[-.\s]?\d{4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)12 3456 789 0123
+r'^\d{2}[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-345 678 9012
+r'^\(0\)\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # (0)123-4567-8901
+r'^\d{3}[-.\s]?\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123-45-6789-0123
+r'^\(0\)\d{1,4}[-.\s]?\d{3}[-.\s]?\d{3}$',  # (0)1234-567-8901
+r'^\d{10}$',  # 1234567890 (simple 10-digit number)
+r'^\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123-456-7890 or 123 456 7890
+r'^\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-345-6789 or 12 345 6789
+r'^\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # 1-234 567 8901 or 12-345 6789
+r'^\(0\)\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # (0)123 456 7890 or (0)123-456-7890
+r'^\+0\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # +0123-456-7890 or +0123 456 7890
+r'^\(0\)\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)12-345 6789 or (0)12 345 6789
+r'^\d{2}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 12-34-5678 or 12 34 5678
+r'^\(0\)\d{3}[-.\s]?\d{2}[-.\s]?\d{3}$',  # (0)123-45-678 or (0)123 45 678
+r'^\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # 1234-5678-9012 or 1234 5678 9012
+r'^\+0\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # +01234-5678-9012 or +01234 5678 9012
+r'^\(0\)\d{4}[-.\s]?\d{3}[-.\s]?\d{3}$',  # (0)1234-567-890 or (0)1234 567 890
+r'^\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-345 6789 or 12 345 6789
+r'^\(0\)\d{1,3}[-.\s]?\d{2,3}[-.\s]?\d{4}$',  # (0)123-45-6789 or (0)123 45 6789
+r'^\d{1,4}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 1234-56-7890 or 1234 56 7890
+r'^\d{1,3}[-.\s]?\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123-45-678 9012 or 123 45 678 9012
+r'^\+0\d{1,3}[-.\s]?\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +0123-456-789-0123
+r'^\d{1,4}[-.\s]?\(0\)\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 1234 (0)12-345-6789
+r'^\+0\d{1,2}[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +01 234 567 8901
+r'^\(0\)\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # (0)12-3456-7890 or (0)12 3456 7890
+r'^\+0\d{1,3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +0123-4567-8901 or +0123 4567 8901
+r'^\d{1,4}[-.\s]?\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 1234-56-7890 1234
+r'^\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123-456-7890 or 123 456 7890
+r'^\(0\)\d{1,4}[-.\s]?\d{2}[-.\s]?\d{4}$',  # (0)1234-56-7890 or (0)1234 56 7890
+r'^\+0\d{1,4}[-.\s]?\d{1,2}[-.\s]?\d{4}$',  # +01234 56 7890
+r'^\+0\d{1,3}[-.\s]?\d{2}[-.\s]?\d{3}$',  # +0123-45-678 or +0123 45 678
+r'^\+0\d{1,3}[-.\s]?\d{1,2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +01234 567 890 1234
+r'^\(0\)\d{3}[-.\s]?\d{1,2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)123 45 678 9012
+r'^\+0\d{1,4}[-.\s]?\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +01234 567 890 1234
+r'^\(0\)\d{3}[-.\s]?\d{4}$',  # (0)123-4567 or (0)123 4567
+r'^\(0\)\d{4}[-.\s]?\d{4}$',  # (0)1234-5678 or (0)1234 5678
+r'^\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 123-45-6789 or 123 45 6789
+r'^\(0\)\d{1,4}[-.\s]?\d{1,3}[-.\s]?\d{4}$',  # (0)1234-56-7890 or (0)1234 56 7890
+r'^\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{1,4}$',  # 123-456-7890 or 123 456 7890
+r'^\+0\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # +01234 5678 9012 or +01234-5678-9012
+r'^\(0\)\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)12-345 6789 or (0)12 345 6789
+r'^\d{3}[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{3}$',  # 123-456-789-0123 or 123 456 789 0123
+r'^\(0\)\d{4}[-.\s]?\d{3}[-.\s]?\d{3}$',  # (0)1234-567-890 or (0)1234 567 890
+r'^\d{1,4}[-.\s]?\(0\)\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 1234 (0)12-345-6789
+r'^\(0\)\d{3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # (0)1234-5678-9012 or (0)1234 5678 9012
+r'^\d{1,3}[-.\s]?\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 123-456-78-9012 or 123 456 78 9012
+r'^\(0\)\d{2}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # (0)12-3456-7890 or (0)12 3456 7890
+r'^\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 1234-5678-90-1234 or 1234 5678 90 1234
+r'^\+0\d{1,4}[-.\s]?\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +01234 567 890 1234
+r'^\(0\)\d{1,3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # (0)123-45-6789 or (0)123 45 6789
+r'^\d{1,2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 12-3456-7890 or 12 3456 7890
+r'^\(0\)\d{1,3}[-.\s]?\d{1,3}[-.\s]?\d{4}$',  # (0)123-45-678 or (0)123 45 678
+r'^\+0\d{1,4}[-.\s]?\d{2}[-.\s]?\d{4}$',  # +01234-56-7890 or +01234 56 7890
+r'^\d{1,3}[-.\s]?\d{4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123-4567-890 1234 or 123 4567 890 1234
+r'^\+0\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +0123 456 789 0123
+r'^\(0\)\d{1,2}[-.\s]?\d{1,4}[-.\s]?\d{3}$',  # (0)12-3456-789 or (0)12 3456 789
+r'^\d{2}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 12-34-5678 or 12 34 5678
+r'^\(0\)\d{3}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # (0)123-45-6789 or (0)123 45 6789
+r'^\+0\d{1,2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +012 3456 7890 or +012 3456 7890
+r'^\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 12-3456-7890 or 12 3456 7890
+r'^\(0\)\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)123-456-7890 or (0)123 456 7890
+r'^\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123-456-7890 or 123 456 7890
+r'^\(0\)\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)12-345 6789 or (0)12 345 6789
+r'^\d{2}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 12-34-5678 or 12 34 5678
+r'^\(0\)\d{1,3}[-.\s]?\d{1,3}[-.\s]?\d{4}$',  # (0)123-45-6789 or (0)123 45 6789
+r'^\+0\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # +01234 5678 9012 or +01234-5678-9012
+r'^\d{1,4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 1234-567-8901 or 1234 567 8901
+r'^\(0\)\d{4}[-.\s]?\d{2}[-.\s]?\d{4}$',  # (0)1234-56-7890 or (0)1234 56 7890
+r'^\d{1,3}[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123-456-789-0123 or 123 456 789 0123
+r'^\(0\)\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)123-456-7890 or (0)123 456 7890
+r'^\+0\d{1,3}[-.\s]?\d{1,3}[-.\s]?\d{3}$',  # +0123-45-678 or +0123 45 678
+r'^\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 12-3456-7890 or 12 3456 7890
+r'^\(0\)\d{1,2}[-.\s]?\d{2}[-.\s]?\d{3}$',  # (0)12-34-567 or (0)12 34 567
+r'^\d{3}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # 123-4567-8901 or 123 4567 8901
+r'^\(0\)\d{2}[-.\s]?\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # (0)12-345-67-8901
+r'^\+0\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +012-345-6789 or +012 345 6789
+r'^\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 123-45-6789 or 123 45 6789
+r'^\(0\)\d{1,2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # (0)12-3456-7890 or (0)12 3456 7890
+r'^\+0\d{1,4}[-.\s]?\d{1,2}[-.\s]?\d{4}$',  # +01234-56-7890 or +01234 56 7890
+r'^\(0\)\d{1,3}[-.\s]?\d{2}[-.\s]?\d{3}$',  # (0)123-45-678 or (0)123 45 678
+r'^\d{3}[-.\s]?\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 123-456-78-9012 or 123 456 78 9012
+r'^\(0\)\d{3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # (0)123-4567-8901 or (0)123 4567 8901
+r'^\+0\d{1,2}[-.\s]?\d{2}[-.\s]?\d{3}$',  # +012-34-567 or +012 34 567
+r'^\d{1,4}[-.\s]?\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 1234-567-89-1234 or 1234 567 89 1234
+r'^\(0\)\d{2}[-.\s]?\d{1,4}[-.\s]?\d{3}$',  # (0)12-3456-789 or (0)12 3456 789
+r'^\+0\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +012-345-6789 or +012 345 6789
+r'^\d{4}[-.\s]?\d{3}[-.\s]?\d{3}$',  # 1234-567-890 or 1234 567 890
+r'^\(0\)\d{4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)1234-567-8901 or (0)1234 567 8901
+r'^\+0\d{3}[-.\s]?\d{3}[-.\s]?\d{2}$',  # +0123-456-78 or +0123 456 78
+r'^\d{2}[-.\s]?\d{5}[-.\s]?\d{3}$',  # 12-34567-890 or 12 34567 890
+r'^\(0\)\d{5}[-.\s]?\d{4}$',  # (0)12345-6789 or (0)12345 6789
+r'^\d{3}[-.\s]?\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 123-456-78-9012 or 123 456 78 9012
+r'^\(0\)\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # (0)12-3456-7890 or (0)12 3456 7890
+r'^\+0\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +012-345-6789 or +012 345 6789
+r'^\d{1,5}[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12345-67-890-1234 or 12345 67 890 1234
+r'^\(0\)\d{1,3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)123-456-7890 or (0)123 456 7890
+r'^\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-345-6789 or 12 345 6789
+r'^\(0\)\d{2}[-.\s]?\d{3}[-.\s]?\d{3}$',  # (0)12-345-678 or (0)12 345 678
+r'^\+0\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # +01234-5678-9012 or +01234 5678 9012
+r'^\d{1,4}[-.\s]?\d{4}[-.\s]?\d{3}$',  # 1234-5678-901 or 1234 5678 901
+r'^\(0\)\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # (0)123-45-6789 or (0)123 45 6789
+r'^\+0\d{3}[-.\s]?\d{2}[-.\s]?\d{3}$',  # +0123-45-678 or +0123 45 678
+r'^\d{3}[-.\s]?\d{4}[-.\s]?\d{3}$',  # 123-4567-890 or 123 4567 890
+r'^\(0\)\d{2}[-.\s]?\d{2}[-.\s]?\d{4}$',  # (0)12-34-5678 or (0)12 34 5678
+r'^\+0\d{1,3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # +0123-45-6789 or +0123 45 6789
+r'^\d{1,4}[-.\s]?\d{3}[-.\s]?\d{3}$',  # 1234-567-890 or 1234 567 890
+r'^\(0\)\d{3}[-.\s]?\d{3}$',  # (0)123-456 or (0)123 456
+r'^\+0\d{1,5}[-.\s]?\d{3}[-.\s]?\d{3}$',  # +012345-678-901 or +012345 678 901
+r'^\d{4}[-.\s]?\d{3}[-.\s]?\d{2}$',  # 1234-567-89 or 1234 567 89
+r'^\(0\)\d{4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (0)1234-567-8901 or (0)1234 567 8901
+r'^\+0\d{1,4}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +01234-5678-9012 or +01234 5678 9012
+r'^\d{1,5}[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12345-67-890-1234 or 12345 67 890 1234
+r'^\+?\d{1,4}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}$',  # +1234(567)890-1234 or +1234 (567) 890 1234
+r'^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{3}$',  # (123)-456-789 or (123) 456 789
+r'^\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{4}$',  # 123-4567-8901 or 123 4567 8901
+r'^\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 12-3456-7890 or 12 3456 7890
+r'^\d{3}[-.\s]?\d{4}[-.\s]?\d{3}$',  # 123-4567-890 or 123 4567 890
+r'^\(?\d{2}\)?[-.\s]?\d{3}[-.\s]?\d{4}$',  # (12)-345-6789 or (12) 345 6789
+r'^\(?\d{4}\)?[-.\s]?\d{3}[-.\s]?\d{4}$',  # (1234)-567-8901 or (1234) 567 8901
+r'^\d{3}[-.\s]?\d{5}[-.\s]?\d{2}$',  # 123-45678-90 or 123 45678 90
+r'^\(?\d{1,4}\)?[-.\s]?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # (1234)-56-789-1234 or (1234) 56 789 1234
+r'^\+?0?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,4}$',  # +01234-5678-1234 or 01234 5678 1234
+r'^\(?\d{2}\)?[-.\s]?\d{4}[-.\s]?\d{2}$',  # (12)-3456-78 or (12) 3456 78
+r'^\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-345-6789 or 12 345 6789
+r'^\(?\d{2}\)?[-.\s]?\d{5}[-.\s]?\d{3}$',  # (12)-34567-890 or (12) 34567 890
+r'^\d{1,4}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{4}[-.\s]?\d{4}$',  # 1234-(5678)-1234 or 1234 (5678) 1234
+r'^\+?\d{1,4}[-.\s]?\d{2}[-.\s]?\d{2}[-.\s]?\d{4}$',  # +1234-56-78-9012 or +1234 56 78 9012
+r'^\d{1,5}[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{3}$',  # 12345-678-901-234 or 12345 678 901 234
+r'^\+?\d{1,3}[-.\s]?\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # +123-456-78-9012 or +123 456 78 9012
+r'^\(?\d{2}\)?[-.\s]?\d{4}[-.\s]?\d{4}$',  # (12)-3456-7890 or (12) 3456 7890
+r'^\d{2}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 12-34-5678 or 12 34 5678
+r'^\d{4}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 1234-56-7890 or 1234 56 7890
+r'^\(?\d{3}\)?[-.\s]?\d{2}[-.\s]?\d{5}$',  # (123)-45-67890 or (123) 45 67890
+r'^\+?\d{3}[-.\s]?\d{3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # +123-456-78-9012 or +123 456 78 9012
+r'^\d{4}[-.\s]?\d{4}[-.\s]?\d{2}$',  # 1234-5678-90 or 1234 5678 90
+r'^\(?\d{3}\)?[-.\s]?\d{4}[-.\s]?\d{3}$',  # (123)-5678-901 or (123) 5678 901
+r'^\d{3}[-.\s]?\d{2}[-.\s]?\d{5}$',  # 123-45-67890 or 123 45 67890
+r'^\+?\d{1,3}[-.\s]?\(?\d{1,3}\)?[-.\s]?\d{2}[-.\s]?\d{4}$',  # +123-(456)-78-9012 or +123 (456) 78 9012
+r'^\d{1,5}[-.\s]?\d{3}[-.\s]?\d{4}[-.\s]?\d{3}$',  # 12345-678-901-234 or 12345 678 901 234
+r'^\(?\d{3}\)?[-.\s]?\d{4}[-.\s]?\d{4}$',  # (123)-4567-8901 or (123) 4567 8901
+r'^\(?\d{2}\)?[-.\s]?\d{5}[-.\s]?\d{3}$',  # (12)-34567-890 or (12) 34567 890
+r'^\(?\d{3}\)?[-.\s]?\d{5}[-.\s]?\d{2}$',  # (123)-45678-90 or (123) 45678 90
+r'^\+?\d{2}[-.\s]?\d{2}[-.\s]?\d{4}$',  # +12-34-5678 or +12 34 5678
+r'^\(?\d{4}\)?[-.\s]?\d{3}[-.\s]?\d{4}$',  # (1234)-567-8901 or (1234) 567 8901
+r'^\+?\d{1,3}[-.\s]?\d{1,4}[-.\s]?\d{4}[-.\s]?\d{4}$',  # +1234-5678-9012-3456 or +1234 5678 9012 3456
+r'^\d{1,4}[-.\s]?\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 1234-56-7890-1234 or 1234 56 7890 1234
+r'^\(?\d{1,3}\)?[-.\s]?\d{1,5}[-.\s]?\d{3,4}$',  # (123)-45678-9012 or (123) 45678 9012
+r'^\d{4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 1234-567-8901 or 1234 567 8901
+r'^\+?\d{1,2}[-.\s]?\(?\d{2}\)?[-.\s]?\d{3}[-.\s]?\d{4}$',  # +12-(34)-567-8901 or +12 (34) 567 8901
+r'^\+?\d{1,5}[-.\s]?\d{1,3}[-.\s]?\d{3,4}[-.\s]?\d{2}$',  # +12345-678-9012 or +12345 678 9012
+r'^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$',  # (123)-456-7890 or (123) 456 7890
+r'^\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 12-345-6789 or 12 345 6789
+r'^\(?\d{4}\)?[-.\s]?\d{5}[-.\s]?\d{2}$',  # (1234)-56789-01 or (1234) 56789 01
+r'^\d{2}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 12-3456-7890 or 12 3456 7890
+r'^\+?\d{3}[-.\s]?\d{3}[-.\s]?\d{3}[-.\s]?\d{3}$',  # +123-456-789-1234 or +123 456 789 1234
+r'^\d{3}[-.\s]?\d{3}[-.\s]?\d{4}$',  # 123-456-7890 or 123 456 7890
+r'^\(?\d{2}\)?[-.\s]?\d{3}[-.\s]?\d{4}$',  # (12)-345-6789 or (12) 345 6789
+r'^\d{3}[-.\s]?\d{2}[-.\s]?\d{5}$',  # 123-45-67890 or 123 45 67890
+r'^\+?\d{2}[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$',  # +12-(123)-456-7890 or +12 (123) 456 7890
+r'^\(?\d{4}\)?[-.\s]?\d{6}$',  # (1234)-567890 or (1234) 567890
+r'^\+?\d{1,4}[-.\s]?\d{2}[-.\s]?\d{4}[-.\s]?\d{3}$',  # +1234-56-7890-123 or +1234 56 7890 123
+r'^\d{1,5}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 12345-6789-1234 or 12345 6789 1234
+r'^\+?\d{1,3}[-.\s]?\d{4}[-.\s]?\d{3}[-.\s]?\d{3}$',  # +123-4567-890-123 or +123 4567 890 123
+r'^\(?\d{2}\)?[-.\s]?\d{3}[-.\s]?\d{5}$',  # (12)-345-67890 or (12) 345 67890
+r'^\d{4}[-.\s]?\d{5}[-.\s]?\d{2}$',  # 1234-56789-01 or 1234 56789 01
+r'^\+?\d{2}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +12-345-6789 or +12 345 6789
+r'^\(?\d{3}\)?[-.\s]?\d{5}[-.\s]?\d{3}$',  # (123)-45678-901 or (123) 45678 901
+r'^\+?\d{1,3}[-.\s]?\(?\d{2,3}\)?[-.\s]?\d{2,4}[-.\s]?\d{2,4}$',  # +123-(45)-6789-1234 or +123 45 6789 1234
+r'^\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$',  # (123)-456-7890 or (123) 456 7890
+r'^\d{1,3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123-4567-8901 or 123 4567 8901
+r'^\+?\d{2}[-.\s]?\d{2}[-.\s]?\d{2}[-.\s]?\d{4}$',  # +12-34-56-7890 or +12 34 56 7890
+r'^\(?\d{4}\)?[-.\s]?\d{6}$',  # (1234)-567890 or (1234) 567890
+r'^\+?\d{3}[-.\s]?\d{5}[-.\s]?\d{4}$',  # +123-45678-9012 or +123 45678 9012
+r'^\d{4}[-.\s]?\d{2}[-.\s]?\d{4}$',  # 1234-56-7890 or 1234 56 7890
+r'^\+?\d{3}[-.\s]?\d{1,2}[-.\s]?\d{3,5}$',  # +123-45-67890 or +123 45 67890
+r'^\(?\d{2}\)?[-.\s]?\d{3}[-.\s]?\d{4}$',  # (12)-345-6789 or (12) 345 6789
+r'^\+?\d{2}[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{3}$',  # +12-(123)-456-7890 or +12 (123) 456 7890
+r'^\d{3}[-.\s]?\d{4}[-.\s]?\d{3}$',  # 123-4567-890 or 123 4567 890
+r'^\(?\d{3}\)?[-.\s]?\d{4}[-.\s]?\d{2}$',  # (123)-4567-89 or (123) 4567 89
+r'^\+?\d{1,4}[-.\s]?\d{2}[-.\s]?\d{3,4}[-.\s]?\d{4}$',  # +1234-56-7890-1234 or +1234 56 7890 1234
+r'^\d{5}[-.\s]?\d{3}[-.\s]?\d{2}$',  # 12345-678-90 or 12345 678 90
+r'^\+?\d{3}[-.\s]?\d{2}[-.\s]?\d{5}$',  # +123-45-67890 or +123 45 67890
+r'^\(?\d{3}\)?[-.\s]?\d{2}[-.\s]?\d{5}$',  # (123)-45-67890 or (123) 45 67890
+r'^\(?\d{3}\)?[-.\s]?\d{2}[-.\s]?\d{4}$',  # (123)-45-6789 or (123) 45 6789
+r'^\+?\d{1,4}[-.\s]?\d{1,3}[-.\s]?\d{2}[-.\s]?\d{4}$',  # +1234-567-89-1234 or +1234 567 89 1234
+r'^\d{3}[-.\s]?\d{4}[-.\s]?\d{4}$',  # 123-4567-8901 or 123 4567 8901
+r'^\+?\d{2}[-.\s]?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{3}$',  # +12-(123)-456-7890 or +12 (123) 456 7890
+r'^\(?\d{3}\)?[-.\s]?\d{2}[-.\s]?\d{5}$',  # (123)-45-67890 or (123) 45 67890
+r'^\+?\d{2}[-.\s]?\d{3}[-.\s]?\d{5}$',  # +12-345-67890 or +12 345 67890
+r'^\+?\d{1,3}[-.\s]?\d{4}[-.\s]?\d{3}[-.\s]?\d{4}$',  # +123-4567-8901-2345 or +123 4567 8901 2345
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Standard email format
+r'^[a-zA-Z0-9._%+-]+@[0-9.-]+\.[a-zA-Z]{2,}$',# Numeric domain email
+r'^"([a-zA-Z0-9._%+-]+)"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quoted email
+r'^[\u4e00-\u9fa5]+@[\u4e00-\u9fa5]+\.[a-zA-Z]{2,}$',  # Chinese Unicode email
+r'^[\u00C0-\u00FF]+@[\u00C0-\u00FF]+\.[a-zA-Z]{2,}$',  # German Unicode email
+r'^[a-zA-Z0-9._%+-]+@(\d{1,3}\.){3}\d{1,3}$',  # IP address as domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$',# Domain with hyphen
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$', # Numeric TLD
+r'^[\uac00-\ud7af]+@[\uac00-\ud7af]+\.[a-zA-Z]{2,}$',  # Korean Unicode email
+r'^[a-zA-Z0-9._%+-]+@[^\x00-\x7F]+\.[^\x00-\x7F]+$',   # Unicode domain email
+r'^[\u0590-\u05FF]+@[\u0590-\u05FF]+\.[a-zA-Z]{2,}$',  # Hebrew Unicode email
+r'^[\u0600-\u06FF]+@[\u0600-\u06FF]+\.[a-zA-Z]{2,}$',  # Arabic Unicode email
+r'^[\u0410-\u044F]+@[\u0410-\u044F]+\.[a-zA-Z]{2,}$',  # Russian Unicode email
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{3,}$',# TLD longer than 4 chars
+r'^"[^"]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Quoted local part email
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[0-9]{1,3}$',  # Numeric-only TLD
+r'^[\u3040-\u309F]+@[\u3040-\u309F]+\.[a-zA-Z]{2,}$',  # Japanese Kana email
+r'^[\u00A1-\uFFFFa-zA-Z0-9._%+-]+@[^\x00-\x7F]+\.[^\x00-\x7F]+$',  # Mixed Unicode
+r'^[\u03B1-\u03C9]+@[\u03B1-\u03C9]+\.[a-zA-Z]{2,}$',  # Greek Unicode email
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$',  # Subdomain with hyphen
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.[a-zA-Z]+\.[a-zA-Z]{2,}$',  # Multiple subdomains
+r'^@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',   # Missing local part
+r'^"[a-zA-Z0-9 ]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Quoted local with spaces
+r'^[a-zA-Z0-9]+@[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$',  # IPv4 address domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,63}$',   # Domain with long TLD
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$', # Hyphenated domain
+r'^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Numeric-only local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[0-9]+$', # Domain ending in numbers
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z]{2,}$',  # Multiple subdomains
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Standard email format
+r'^[a-zA-Z0-9._%+-]+\\@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Email with backslashes
+r'^"[^"]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quoted email addresses
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\u4e00-\u9fa5]+\.[a-zA-Z]{2,}$',  # Mixed ASCII and Chinese
+r'^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9.-]+)+\.(com|org|net|edu)$',  # Personal email format
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|gov|edu|co)\.[a-zA-Z]{2,}$',  # Company email format
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Catch-all email regex
+r'^[a-zA-Z0-9._%+-]+[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Email with numeric username
+r'^[a-zA-Z0-9._%+-_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Underscores in username
+r'^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$',  # Multi-level subdomains
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$',  # Hyphenated domain email
+r'^[a-zA-Z0-9._%+-]+@\[[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+\]$',  # Email with IP address as domain
+r'^[a-zA-Z0-9._%+-]+@xn--[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Punycode (IDN) domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z]$',  # Single-character domain email
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[0-9]+$',  # Email with numeric TLD
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multi-dot domain email
+r'^@[\w-]+\.[a-zA-Z]{2,}$',  # Email with missing local part
+r'^[a-zA-Z0-9._%+-]+@(mailinator|tempmail|10minutemail|yopmail)\.[a-zA-Z]{2,}$',  # Disposable email
+r'^[\u00A0-\uFFFF]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Unicode local part email
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$',  # Long TLD email
+r'^[\x80-\xFF]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Extended ASCII email
+r'^".+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quoted strings in local part
+r'^\.?[a-zA-Z0-9._%+-]+\.[a-zA-Z0-9._%+-]+\.?@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Period edge case
+r'^[a-zA-Z0-9._%+-]+\+.+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Plus alias email
+r'^[a-zA-Z0-9._%+-]{65,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Long local part email
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+$',  # Missing TLD email
+r'^[a-zA-Z0-9._%+-]+@[\u00A1-\uFFFF]+\.[a-zA-Z]{2,}$',  # Unicode characters in the domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[0-9]+$',  # Domain ending in a number
+r'^[!#$%&\'*+/=?^_`{|}~]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with special ASCII characters
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Z]+\.[a-zA-Z]{2,}$',  # Mixed-case local part and domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]+$',  # Hyphenated TLD
+r'^[a-zA-Z0-9.]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Dot in local part without quotes
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]{2,}$',  # Domain with underscore
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z]+\.[a-zA-Z]+\.[a-zA-Z]{2,}$',  # Domain with nested subdomains
+r'^[a-zA-Z0-9._%+-]+\.\.+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with consecutive dots
+r'^[0-9]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$',  # Local part with numbers only and domain with hyphens
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$',  # Domain with digits in TLD
+r'^"[a-zA-Z0-9!#$%&\'*+/=?^_`{|}~]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quoted local part with special characters
+r'^[a-zA-Z0-9._%+-]+@[^\x00-\x7F]+\.[^\x00-\x7F]+$',  # Domain with unicode characters
+r'^[a-zA-Z0-9._%+-]{3,}@[\w.-]+\.[a-zA-Z]{2,}$',  # Local part with mixed alphanumeric and special characters
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{5,}$',  # TLD with length greater than 4
+r'^<[a-zA-Z0-9._%+-]+>@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part enclosed in angle brackets
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z]{2,}$',  # Email with multiple subdomains
+r'^[a-zA-Z0-9-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with single hyphen
+r'^\[[a-zA-Z0-9._%+-]+\]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part enclosed in square brackets
+r'^[a-zA-Z0-9._%+-]+@[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$',  # Email with IP address as domain
+r'^[a-zA-Z0-9._%+-_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with underscore
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Email with domain containing numbers
+r'^[a-zA-Z0-9.-]+--[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with consecutive hyphens
+r'^[a-zA-Z0-9._%+-]+@"[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"$',  # Quoted domain part
+r'^[^\x00-\x7F]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Email with special Unicode in local part
+r'^[a-zA-Z0-9!#$%&\'*+/=?^_`{|}~.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Email with multiple special characters
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{10,}$',  # Long domain extension
+r'^[^\x00-\x7F!#$%&\'*+/=?^_`{|}~.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Unicode + special characters
+r'^[\U0001F600-\U0001F64F]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Emoji in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[0-9]+$',  # Numeric TLD
+r'^"[a-zA-Z0-9 ]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Spaces in quoted local part
+r'^[a-zA-Z0-9._%+-]+[._-]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Mixed separators in local part
+r'^[a-zA-Z0-9._%+-]+\.[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Trailing dot in local part
+r'^[!#$%&\'*+/=?^_`{|}~][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Starts with special characters
+r'^[a-zA-Z0-9._%+-]+[!#$%&\'*+/=?^_`{|}~]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Ends with special characters
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+\.[0-9]+$',  # Subdomains with numeric TLD
+r'^"[\s]+[a-zA-Z0-9._%+-]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quoted local part with spaces
+r'^[a-zA-Z0-9]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Single character local part
+r'^[a-zA-Z0-9._%+-]{64}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Max-length local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{255}\.[a-zA-Z]{2,}$',  # Max-length domain
+r'^[^\x00-\x7F]{1,64}@[^\x00-\x7F]{1,253}\.[a-zA-Z]{2,}$',  # Unicode + max length
+r'^[0-9]+@[0-9]+\.[a-zA-Z]{2,}$',  # Numeric local and domain
+r'^[a-zA-Z0-9._%+-=]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with equals
+r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple dots in local part
+r'^[a-zA-Z0-9]+(\+[\d]+)?@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with numbers and plus sign
+r'^[0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part starts with a number
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Underscores in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.[a-zA-Z]{2,}$',  # Multiple subdomains
+r'^[a-zA-Z0-9._%+-]+@[0-9a-zA-Z][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Domain starting with number
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+-[a-zA-Z0-9]+\.[a-zA-Z]{2,}$',  # Domain part with hyphen
+r'^[!#$%&\'*+/=?^_`{|}~][a-zA-Z0-9!#$%&\'*+/=?^_`{|}~]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Special characters in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+--[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Consecutive hyphens in domain part
+r'^"[a-zA-Z0-9!#$%&\'*+/=?^_`{|}~]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quoted local part with special characters
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple dots in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$',  # Domain containing numbers with valid TLD
+r'^[a-zA-Z0-9._%+-]+@[0-9]+\.[a-zA-Z]{2,}$',  # Domain with numbers only
+r'^[a-zA-Z]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with mixed-case letters
+r'^[a-zA-Z][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part starting with a letter
+r'^[a-zA-Z0-9-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with hyphens
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%-]+\.[a-zA-Z]{2,}$',  # Underscore in domain part
+r"^[a-zA-Z0-9._%+-]+('[a-zA-Z0-9._%+-]+)?@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Single quote in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.[a-zA-Z]{2,}$',  # Two or more subdomains
+r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple alphanumeric segments separated by periods
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$',  # Domain name with country code TLD
+r'^[a-zA-Z0-9]+(\+[\w\d]+)?@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Plus sign with alphanumeric extension
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[0-9]+$',  # Numeric second-level domain
+r'^[^\x00-\x7F]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Non-ASCII characters in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9._%+-]+$',  # International characters in domain part
+r'^[a-zA-Z0-9._%+-]+@(\d{1,3}\.){3}\d{1,3}:\d{2,5}$',  # Domain as IP address with port
+r'^[a-zA-Z0-9-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with hyphens and numbers
+r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple dots in the local part
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$',  # Digits in domain, valid TLD
+r'^[a-zA-Z0-9._%+-]+_[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Underscores in local and domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Subdomains in email
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.[a-zA-Z]{2,}$',  # Multiple TLDs
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$',  # Country-specific TLD (like .cn, .uk)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]+$',  # International characters in domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9-]+$',  # Numeric domain with international TLD
+r'^[a-zA-Z0-9]+(\+[\w\d]+)?@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # + and multiple subdomains
+r'"[a-zA-Z0-9._%+-]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quotes in local part
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Single character local part
+r'^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Numeric local part
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+\.[a-zA-Z]{2,}$',  # Mixed numeric and alphabetic domain
+r'^[a-zA-Z0-9._%+-]+_[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Underscores with multiple subdomains
+r'^[a-zA-Z0-9._%+-]+\+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zAZ]{2,}$',  # Plus sign in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$',  # Alphabet only domain part
+r'^[a-zA-Z0-9._%+-]+(\+[a-zA-Z0-9._%+-]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple plus signs
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$',  # No period between username and domain
+r'^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Only numbers in username
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_]+(\.[a-zA-Z]{2,})+$',  # Underscore in domain part
+r'^[a-zA-Z0-9._%+-]+@[0-9]+\.[a-zA-Z]{2,}$',  # Numeric domain part
+r'^[a-zA-Z0-9._%+-àáäâ]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Accented letters in email
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,}){2,}$',  # Unicode characters in both username and domainregexes = [
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,}$',  # TLD with more than 3 characters
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Alphanumeric local part, valid domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple subdomains allowed
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$',  # Dash-separated domain labels
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\d+\.[a-zA-Z]{2,}$',  # Domain ends with a number
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+\.[a-zA-Z]{2,}$',  # Subdomain with numeric characters
+r'^[a-zA-Z0-9._%+-]+-[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Hyphen in local and domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Mixed case TLDs (upper and lower case)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$',  # ccTLD (country code)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]+$',  # Punycode domain (xn--)
+r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Consecutive dots in local part
+r'^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Numeric local part followed by '@'
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$',  # Domain with less common TLDs
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$',  # Hyphen in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\d+\.[a-zA-Z]{2,}$',  # Numeric domain end
+r'^[0-9][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part starts with number
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_]+\.[a-zA-Z]{2,}$',  # Underscore in domain part
+r'^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Hyphen in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\d{2,}\.[a-zA-Z]{2,}$',  # Numeric domain with multiple digits
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple subdomains with numbers
+r'^[a-zA-Z0-9._%+-]+@[0-9][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Domain starts with number
+r'^[a-zA-Z0-9._%+-]+__+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Consecutive underscores in local part
+r'^[a-zA-Z0-9._%+-]+(\.[a-zA-Z0-9._%+-]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Periods at start or end of local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+\.[a-zA-Z]{2,}$',  # Domain with alphanumeric parts
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$',  # Domain with hyphen
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.\.[a-zA-Z]{2,}$',  # Consecutive periods in domain part
+r'^[a-zA-Z0-9._%+-]+@[0-9]+\.[0-9]{2,}$',  # Domain and TLD as numeric
+r'^[a-zA-Z0-9._%+-]+-[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Hyphen at the end of local part
+r'^[a-zA-Z0-9._%+-]+[+][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with plus sign
+r'^[a-zA-Z0-9._%+-]+(\.[a-zA-Z0-9._%+-]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Dots in the local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple subdomains
+r'^[a-zA-Z0-9._%+-]+@[0-9]+\.[a-zA-Z]{2,}$',  # Numeric domain part
+r'^[a-zA-Z0-9._%+-]+\.[0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part dot followed by digit
+r'^[\w!#$%&\'*+/=?^_`{|}~-]+(?:\.[\w!#$%&\'*+/=?^_`{|}~-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$',  # Non-ASCII characters in local part
+r'^[a-zA-Z0-9._%+-!#$&\'*+/=?^_`{|}~]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Special characters in local part
+r'^[a-zA-Z0-9._%+-]+@[0-9]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})+$',  # Numeric domain and multiple extensions
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Hyphen in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\d{1,}[!#$%&\'*+/=?^_`{|}~-]*\.[a-zA-Z]{2,}$',  # Domain with special characters and numbers
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+\.[a-zA-Z]{2,}$',  # Single character subdomain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[0-9a-zA-Z-]+\.[a-zA-Z]{2,}$',  # Numeric and alphabetic subdomains
+r'^[a-zA-Z0-9._%+-]+[!#$&\'*+/=?^_`{|}~]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Alphanumeric with special symbols in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\d{1,}(\.[a-zA-Z0-9]{2,})+$',  # Multiple subdomains and numeric domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\u00C0-\u024F]+(\.[a-zA-Z]{2,})+$',  # Domain with international characters
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})+$',  # Multiple subdomains and valid domain
+r'^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]{2,}$',  # Local part with only uppercase and lowercase letters
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-!#$%&\'*+/=?^_`{|}~]+\.[a-zA-Z]{2,}$',  # Special characters in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\u4E00-\u9FFF]+(\.[a-zA-Z]{2,})+$',  # International characters in domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\d{1,}(\.[a-zA-Z0-9!#$%&\'*+/=?^_`{|}~]+)+\.[a-zA-Z]{2,}$',  # Numeric and special symbols in domain and subdomains
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\-[a-zA-Z0-9]+\.[a-zA-Z]{2,}$',  # Hyphens in subdomains
+r'^[a-zA-Z0-9._%+-]+(\.[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple dots in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\d{1,}\.[a-zA-Z0-9.-]+$',  # Numeric domain extension
+r'^[a-zA-Z0-9._%+-]+@[\u00C0-\u024F]+(\.[a-zA-Z]{2,})+$',  # Unicode characters in domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+\-[a-zA-Z0-9]+\.[a-zA-Z]{2,}$',  # Numeric and hyphen subdomain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})+$',  # Multiple TLDs with valid domain
+r'^[a-zA-Z0-9._%+-!#$%&\'*+/=?^_`{|}~]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with alphanumeric and special characters
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+[a-zA-Z0-9]+\.[a-zA-Z]{2,}$',  # Hyphen and alphanumeric domain
+r'^[a-zA-Z\-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$',  # Local part with uppercase, lowercase, and hyphen
+r'^[a-zA-Z0-9._%+-]+[0-9!#$%&\'*+/=?^_`{|}~]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Digits and special chars in local part
+r'^[a-zA-Z]+(\.[a-zA-Z]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Periods in local part
+r'^[a-zA-Z0-9._%+-]+@[\u00C0-\u024F]+\.[a-zA-Z]{2,}$',  # Unicode characters in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\d{1,}[\!\#\$\%\&\*\/\=\?\^\_`\{\|\}~]+(\.[a-zA-Z]{2,})+$',  # Numbers and special characters in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\u4E00-\u9FFF]+(\.[a-zA-Z]{2,})+$',  # Multiple domain levels with Unicode subdomain
+r'^[a-zA-Z0-9._%+-]+(\.[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Mix of alphanumeric, special chars, and periods
+r'^[a-zA-Z0-9._%+-]+[a-zA-Z0-9\u00C0-\u024F]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # International characters in local part
+r'^[0-9][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'  # Local part starting with a number, followed by alphanumeric charactersregexes = [
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[+][a-zA-Z0-9]+\.([a-zA-Z]{2,})$',  # Plus sign in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(co|org|gov|edu|com|net|int|mil|eu|us|ca|uk|de|fr)[a-zA-Z]{2,}$',  # Common domain extensions
+r'^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with underscores, hyphens, and periods
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+\.[a-zA-Z]{2,}$',  # Multiple subdomains
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+\.[a-zA-Z]{2,}$',  # Domain with hyphens
+r'^[a-zA-Z0-9._%+-]+@[0-9.-]+\.[a-zA-Z]{2,}$',  # Domain with numbers and dots
+r'^[a-zA-Z0-9]+([.]+[a-zA-Z0-9]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Consecutive periods in local part
+r'^[a-zA-Z0-9._%+-]+[\u00C0-\u00FF]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Latin-1 characters in local part
+r'^[\u0000-\uFFFF]+@[\u0000-\uFFFF]+\.[a-zA-Z]{2,}$',  # Full Unicode in both local part and domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,})?$',  # Email with optional subdomain
+r'^[a-zA-Z]+[a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Mixed case local part
+r'^[a-zA-Z0-9._%+-]+(\+[\w-]+)*@[a-zA-Z0-9.-]+\.[0-9]{1,}$',  # Local part with plus sign and numeric domain
+r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Dot-separated local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)+\.[a-zA-Z]{2,}$',  # Multi-character subdomains
+r'^[a-zA-Z0-9_-]+[.]*[a-zA-Z0-9_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Special chars in local part
+r'^[a-zA-Z0-9]+[-][a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Hyphen in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[\u00C0-\u00FF]+)+$',  # IDN domain extensions
+r'^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Numeric local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # ccTLD with multiple subdomains
+r'^[A-Z]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Acronym local part in uppercase
+r'^[a-zA-Z0-9!#$%&\'*+-/=?^_`{|}~]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple special chars in local part
+r'^[\u0000-\uFFFF]+@[\u0000-\uFFFF]+\.[a-zA-Z]{2,}$',  # Full Unicode IDN domain and local part
+r'^[0-9]+@[0-9]+\.[0-9]+$',  # Numeric email address with numeric domain
+r'^[!#$%&\'*+-/=?^_`{|}~]+\.[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Special char followed by period
+r'^[a-zA-Z0-9._%+-]+@(\d{1,3}\.){3}\d{1,3}$',  # Domain as IP address
+r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'  # Multiple periods in the local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+$',  # Multiple periods in TLD
+r'^[!#$%&\'*+-/=?^_`{|}~]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Special characters in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Country code TLD
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[0-9]+$',  # Multiple subdomains with numeric TLD
+r'^[a-zA-Z0-9]+[-a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Hyphen in local part
+r'^[a-zA-Z0-9]+[-a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Digits, letters, hyphen in local part
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Invalid multiple '@' symbols
+r'^.{65,}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part too long
+r'^[a-zA-Z0-9]+ [a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Space in local part
+r'^\.+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with only dots
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$',  # Mixed-case TLD
+r'^[a-zA-Z0-9]+@[0-9]+\.[a-zA-Z]+$',  # Numeric domain with mixed-case TLD
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1}$',  # Single character TLD
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9]+$',  # Invalid email with no domain period
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Valid domain and TLD but leading spaces
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$',  # Underscores in domain name
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple subdomains
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Uppercase domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Country-specific TLDs (e.g., .de, .co.uk)
+r'^[a-zA-Z0-9._%+-]+(\.[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Period at the end of local part
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Mixed-case in local part
+r'^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$',  # Numeric characters in domain and local part
+r'^[a-zA-Z0-9]+(\+?[a-zA-Z0-9]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple '+' symbols in local part
+r'^[a-zA-Z0-9]+([!#$%&\'*+/=?^_`{|}~-]+[a-zA-Z0-9]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Special characters in local part
+r'^[a-zA-Z0-9]+([a-zA-Z0-9]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # International domain and local part
+r'^[\u4e00-\u9fa5a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Non-latin characters in local part
+r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple dots in local part
+r'^[0-9]+[a-zA-Z]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Starts with number and ends with letter in local part
+r'^[a-zA-Z0-9._%+-]+@[а-яА-ЯёЁa-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Cyrillic domain names
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]{2,}$',  # Domain contains underscores and hyphens
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+\.[a-zA-Z0-9]{2,}$',  # Numbers in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$',  # Country-specific TLDs like .com.au
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Mixed domain parts
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Extra subdomain
+r'^[a-zA-Z0-9._%+-]+(\+)[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # "+" symbol for aliases
+r'^[a-zA-Z0-9._%+-àéèòùáäöñ]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Accented letters in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Multiple subdomains in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$', # TLD with letters and numbers
+r'^[a-zA-Z0-9._%+-]+(\.[a-zA-Z0-9._%+-]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Multiple periods in local part
+r'^[a-zA-Z0-9._%+-!#$%&\'*+/=?^_`{|}~]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Special characters in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{7,}$', # TLD with more than 6 characters
+r'^[a-zA-Z0-9._%+-]+@[0-9.-]+\.[a-zA-Z]{2,}$', # Numeric domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]{2,}$', # Underscore in domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Subdomain with numbers
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$', # TLD with numbers
+r"^[a-zA-Z0-9._%+-]+(['`]+[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", # Apostrophe in local part
+r'^[a-zA-Z0-9._%+-]{1,1}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Single letter local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$', # Domain part with hyphen
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Multiple subdomains in domain part (again)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$', # TLD with letters and numbers (again)
+r'^[a-zA-Z0-9._%+-]+_[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Underscore in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Multi-level domain
+r'^[a-zA-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$', # Uppercase characters in domain part
+r'^[0-9][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Local part starting with a number
+r'^[a-zA-Z0-9._%+-]+@[0-9]+\.[a-zA-Z]{2,}$', # Numeric domain and valid domain extension
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Domain with multiple dots
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$', # Country-specific TLD like .co.uk
+r'^[a-zA-Z0-9._%+-]+@(\d{1,3}\.){3}\d{1,3}$', # IP address in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{4,}$', # Subdomain with custom TLD
+r'^[a-zA-Z0-9._%+-]{1}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Single-character local part
+r'^[a-zA-Z0-9._%+-]{64,}@([a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$', # Long local part (over 64 characters)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Domain name with dots
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]{2,}$', # Domain with underscores
+r'^[\u4e00-\u9fff]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Non-Latin characters in local part (e.g., 你好@domain.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[\u0900-\u097F]+$', # Non-ASCII characters in TLD (e.g., user@domain.भारत)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Very short domain part (e.g., user@a.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+-[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Hyphen at end of domain (e.g., user@domain-.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Multiple subdomains (e.g., user@sub.subdomain.domain.com)
+r'^[a-zA-Z0-9._%+-]+@[A-Z0-9.-]+\.[a-zA-Z]{2,}$', # Uppercase letters in domain (e.g., user@EXAMPLE.com)
+r'^[a-zA-Z0-9._%+-]+[+]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Plus sign in local part (e.g., user+123@example.com)
+r'^[a-zA-Z0-9._%+-]+[.]{2,}[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Multiple consecutive dots in local part (e.g., user..name@example.com)
+r'^[a-zA-Z0-9._%+-]+[.]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Dot at end of local part (e.g., user.@example.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\+\&\%#]?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Special characters in domain (e.g., user@ex-ample.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$', # TLD with numbers (e.g., user@example123.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\u0400-\u04FF]+\.[a-zA-Z]{2,}$', # Non-Latin characters in domain (e.g., user@пример.рф)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,2}$', # TLD length = 2 (e.g., .co)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\-]?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # TLD with dashes (e.g., user@example-123.com)
+r'^[A-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Uppercase letters in local part (e.g., USER@EXAMPLE.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Multiple subdomains in domain (e.g., user@mail.subdomain.example.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]{2,}$', # Underscores in domain (e.g., user@my_example.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+r'^[\u4e00-\u9fa5a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Non-ASCII in local part (e.g., 用户@example.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$', # Numeric characters in domain (e.g., user@domain123.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # Numbers in local part (e.g., user123@example.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', # More than one '@' symbol (e.g., user@@example.com)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\u0400-\u04FF]+\.[a-zA-Z]{2,}$', # International characters in domain (e.g., user@exemplo.рф)
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[0-9\-]+\.[a-zA-Z]{2,}$', # Domain containing numbers and hyphen (e.g., user@ex-123ample.com)
+r'^[a-zA-Z0-9._%+-]+(\.\.[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple consecutive dots in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\d+\.[a-zA-Z]{2,}$',  # Domain contains digits
+r'^[a-zA-Z0-9._%+-]+[!#$%&\'*+/=?^_`{|}~]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Special characters allowed only in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$',  # ccTLD (country code top-level domain)
+r'^[\w\.-]+@[\w\.-]+\.[a-zA-Z]{2,}$',  # Local part contains unicode characters
+r'^[a-zA-Z0-9._%+-]+[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part contains a number
+r'^[a-zA-Z0-9._%+-]+[_0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part contains underscores and numbers
+r'^[a-zA-Z0-9._%+-]+(-[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with multiple hyphens
+r'^[a-zA-Z0-9._%+-]+(-[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part starting/ending with hyphen
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Domain part contains non-ASCII characters
+r'^[a-zA-Z0-9._%+-]+[.]{1}[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Period immediately before @ symbol
+r'^[a-zA-Z0-9._%+-]+(\.[a-zA-Z0-9._%+-]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple periods and special characters in local part
+r'^[a-zA-Z0-9._%+-]+@[0-9]+(\.[0-9]+)+\.[a-zA-Z]{2,}$',  # Domain part numeric
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1}$',  # Single character TLD
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$',  # Special characters in domain part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[0-9]+$',  # Numeric TLD
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{7,}$',  # TLD greater than 6 characters
+r'^[a-zA-Z0-9._%+-]+[_0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with underscores and numbers
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Mixed-case local part and domain
+r'^[a-zA-Z0-9._%+-]+@xn--[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$',  # IDN domain in Punycode
+r'^"[a-zA-Z0-9._%+-]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quoted local part with special characters
+r'^"[a-zA-Z0-9._%+- ]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quoted local part with spaces
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[^\x00-\x7F]+\.[a-zA-Z]{2,}$',  # Extended ASCII in domain
+r'^[a-zA-Z0-9._%+-]+@-[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Dash at domain start
+r'^[^\x00-\x7F]+[a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Mixed Unicode and ASCII in local part
+r'^"([^"\\]|\\.)+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple @ symbols in quotes
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]{2,}$',  # Domain with underscores
+r'^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Numeric-only local part
+r'^"[\x21\x23-\x5B\x5D-\x7E]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quoted local part with special symbols
+r'^\s+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\s+$',  # Leading or trailing whitespace
+r'^[^\x00-\x7F]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Unicode emojis in local part
+r'^[a-zA-Z0-9._%+-]+(\.\.)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple periods in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(xyz|tech|info|online)$',  # Special TLDs
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+-+\.[a-zA-Z]{2,}$',  # Hyphen at the end of domain name
+r'^[a-zA-Z0-9._%+-]+@\[[0-9]{1,3}(\.[0-9]{1,3}){3}\]$',  # IP address domain
+r'^"[^"]+"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quoted local part with subdomains
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$',  # Mixed case in domain
+r'^.[a-zA-Z0-9._%+-]+.@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part starts and ends with special characters
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+-[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Domain with hyphen-separated subdomains
+r'^[a-zA-Z0-9._%+-]+@[^\x00-\x7F]+\.[^\x00-\x7F]+\.[^\x00-\x7F]+$',  # Unicode TLD with multiple dots
+r'^[a-zA-Z0-9._%+-]+(\.[a-zA-Z0-9._%+-]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Repeated sections in local part
+r'^[a-zA-Z0-9._%+-]+@\[[0-9]{1,3}(\.[0-9]{1,3}){3}\]$',  # IP address as domain
+r'^"\s*[a-zA-Z0-9._%+-]+\s*"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part with spaces in quotes
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\W$',  # Special characters in TLD
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]$',  # Single letter TLD
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$',  # Multiple subdomains
+r'^[a-zA-Z0-9._%+-]+@\[[0-9]{1,3}(\.[0-9]{1,3}){3}\]$',  # IP address as domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+:[0-9]{2,5}$',  # Domain with port number
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+\.[a-zA-Z0-9_-]+\.[a-zA-Z]{2,}$',  # Underscores in domain
+r'^[a-zA-Z0-9._%+-]+@[0-9]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Leading numbers in domain
+r'^[a-zA-Z0-9._%+-=]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Equal sign in local part
+r'^[\w\._%+-]+@[\w\.-]+\.[а-яА-Я]{2,}$',  # Unicode in both local and domain parts
+r'^[a-zA-Z0-9._%+-]+-[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Hyphen in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]{2,}$',  # Special characters in domain
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]$',  # Single-character top-level domain
+r'^[a-zA-Z0-9._%+-]+@[0-9]+\.[0-9]+\.[0-9]+$',  # Numeric-only domain
+r'^[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,}$',  # Mixed scripts in local part
+r'^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$',  # Multi-level subdomains
+r'^[a-zA-Z0-9._%+-]+\'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Apostrophe in local part
+r'^"\s?[a-zA-Z0-9._%+-]+\s?"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Quoted local part with whitespace
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.$',  # Trailing period in domain
+r'^[\w._%+-]+[\+\w._%+-]*@[\w.-]+\.[a-zA-Z]{2,}$',  # Unicode and special characters
+r'^[a-zA-Z0-9._%+-]+(\+[a-zA-Z0-9._%+-]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple '+' in local part
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[0-9]+$',  # Numeric-only TLD
+r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$',  # Special character in domain
+r'^[a-zA-Z0-9._%+-]+@[0-9]{1,3}(\.[0-9]{1,3}){3}$',  # IP address in domain
+r'^[a-zA-Z0-9._%+-]+@[0-9][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Domain starts with number
+r'^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$',  # Multiple subdomains
+r'^[a-zA-Z0-9._%+-]{1,1}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Single character in local part
+r'^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Numeric local part
+r'^\s*[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\s*$',  # Leading or trailing spaces
+r'^[a-zA-Z0-9._%+-]+(\.[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Multiple consecutive dots
+r'^[0-9][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',  # Local part starts with a number
+r"^[a-zA-Z0-9._%+-]+(\.[a-zA-Z0-9._%+-]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple dots in local part
+r"^[a-zA-Z0-9._%+-]+\+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Plus sign but no extra part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$",  # Letters only in domain
+r"^[a-zA-Z0-9._%+-]+@(\d{1,3}\.){3}\d{1,3}$",  # IP address as domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$",  # Domain extension with digits
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})+$",  # Multiple subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[\u4e00-\u9fa5]+$",  # Domain with Chinese characters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]?[a-zA-Z0-9.-]+$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]$",  # Hyphen at the beginning or end of domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]{2,}$",  # Underscore in the domain
+r"^\d+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Only digits in the local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})+$",  # Multiple dots in TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\d+\.[a-zA-Z]{2,}$",  # Domain name containing digits
+r"^[a-zA-Z0-9._%+-]+[.\-+][a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Local part with .-+ characters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2}$",  # Two-letter country code TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{10,}\.[a-zA-Z]{2,}$",  # Long domain name
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.[a-zA-Z]{2,}$",  # International domain
+r"^[a-zA-Z0-9._%+-]+([+][a-zA-Z0-9._%+-]+)+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple plus signs
+r"^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9.-]+\.)+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Non-alphabet characters in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.\d{3,}$",  # TLD with numbers
+r"^[a-zA-Z0-9._%+-]+@[A-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Uppercase domain name
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Domain only
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z][a-zA-Z0-9.-]*\d{1,}\.[a-zA-Z]{2,}$",  # Letter and number domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})+$",  # Multiple extensions
+r"^[a-zA-Z0-9._%+-]+[^\w\s]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Non-alphabet characters in local
+r"^[a-zA-Z0-9._%+-]+(\.[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Dot in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z.-]+\.[a-zA-Z]{2,}$",  # No numbers in email
+r"^[a-zA-Z0-9._%+-]+(_[a-zA-Z0-9._%+-]+)*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscores in local
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]{2,}$",  # Underscore in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\d+\.[a-zA-Z]{2,}$",  # Number in domain
+r"^[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # No special characters in local part
+r"^[a-zA-Z0-9._%+-]+(\.{2,})[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Consecutive dots in local
+r"^[a-zA-Z0-9._%+-]+[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Numeric character in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Subdomain after '@'
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$",  # Underscore in domain part
+r"^[a-zA-Z0-9._%+-]+@[A-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Uppercase letters in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{1,}\.[a-zA-Z]{2,}$",  # Very short domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$",  # Domain with letters only
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple periods in domain part
+r"^[a-zA-Z0-9._%+-]+![a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Exclamation mark in local part
+r"^[a-zA-Z0-9._%+-]+\?[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Question mark in local part
+r"^[a-zA-Z0-9._%+-]+\$[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Dollar sign in local part
+r"^[a-zA-Z0-9._%+-]+/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Slash in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+:[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Colon in domain part
+r"^[a-zA-Z0-9._%+-]+;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Semicolon in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Caret (^) in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[0-9]+\.[a-zA-Z]{2,}$",  # Number in domain part
+r"^[a-zA-Z0-9._%+-]+\.[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Period before "@"
+r"^[a-zA-Z0-9._%+-]+\([a-zA-Z0-9._%+-]+\)@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Parentheses in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+_[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Plus (+) in domain part
+r"^[a-zA-Z0-9._%+-]+-[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen before "@"
+r"^[a-zA-Z0-9._%+-]+%[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Percent (%) in local part
+r"^[a-zA-Z0-9._%+-]+\+[a-zA-Z0-9._%+-]+\+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple plus signs
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple at signs in domain
+r"^[a-zA-Z0-9._%+-]+\*[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Asterisk (*) in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.$",  # Period at the end of domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Plus sign in domain part
+r"^[a-zA-Z0-9._%+-]+\\+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Backslash in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",   # Double period in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+%[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Percent sign in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+:[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Colon in domain part
+r"^[a-zA-Z0-9._%+-]+__[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Double underscore
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+-[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+;[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Semicolon in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Backslash in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+'[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Apostrophe in domain
+r"^[a-zA-Z0-9._%+-]+_[a-zA-Z0-9._%+-]+\+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore and plus sign
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+![a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Exclamation mark in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+_[a-zA-Z0-9.-]+-[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore and hyphen in domain
+r"^[a-zA-Z0-9._%+-]+/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Slash in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Question mark in domain
+r"^[a-zA-Z0-9._%+-]+\|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Pipe (|) in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+&[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Ampersand (&) in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Caret (^) in domain
+r"^[a-zA-Z0-9._%+-]+~[a-zA-Z0-9._%+-]+\+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Tilde (~) and plus sign (+)
+r"^-+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Dash at the beginning of local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\$[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Dollar sign in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+`[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Backtick in domain
+r"^[a-zA-Z0-9._%+-]+\*[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Asterisk in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+~[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Tilde in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.$",  # Dot at the end of the domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-_]+_[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscores and hyphens in domain
+r"^[a-zA-Z0-9._%+-]+%[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Percent sign in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+:[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Colon in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\^[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Caret in domain
+r"^[a-zA-Z0-9._%+-]+`[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Backtick in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+;[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Semicolon in domain
+r"^[a-zA-Z0-9._%+-]+/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Forward slash in local part
+r"^[a-zA-Z0-9._%+-]+\+[a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Plus sign followed by alphanumeric
+r"^[a-zA-Z0-9._%+-]+@[!a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Exclamation mark at the start of domain
+r"^[a-zA-Z0-9._%+-]+?[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Question mark in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+-[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen in domain extension
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\?[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$",  # Question mark in domain extension
+r"^[a-zA-Z0-9._%+-]+@[_a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore at the start of domain
+r"^[a-zA-Z0-9._%+-]+__[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Double underscore in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[0-9]+\.[a-zA-Z]{2,}$",  # Number in the domain part
+r"^[a-zA-Z0-9._%+-]+\$[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Dollar sign in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+~[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Tilde in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+![a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Exclamation mark in domain
+r"^[a-zA-Z0-9._%+-]+,[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Comma in local part
+r"^[a-zA-Z0-9._%+-]+\[[a-zA-Z0-9._%+-]+\]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Square brackets in local part
+r"^[a-zA-Z0-9._%+-]+:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Colon in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Question mark in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+-\.[a-zA-Z]{2,}$",  # Hyphen at the end of the domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.]{2,}[a-zA-Z]{2,}$",  # Double dot in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+_[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore in domain part
+r"^\S+@\S+\.\S+$",  # No spaces in email
+r"^[a-zA-Z0-9._%+-]+[0-9]+@[a-zA-Z0-9.-]+[0-9]+\.[a-zA-Z]{2,}$",  # Digits in local and domain parts
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+-\d+\.[a-zA-Z]{2,}$",  # Hyphen and digits in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Period in domain, no subdomain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+_[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore in domain
+r"^[a-zA-Z0-9._%+-]+@[0-9][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Domain starts with number
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Mixed case in email
+r"^[a-zA-Z0-9._%+-]+\.\.[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Consecutive dots in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Plus sign in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-_]+\.[a-zA-Z]{2,}$",  # Period and underscore in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Long subdomain
+r"^[a-zA-Z0-9._%+-]+_[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-_]+\.[a-zA-Z]{2,}$",  # Underscore in both parts
+r"^[a-zA-Z0-9._%+-]+@[0-9]+\.[a-zA-Z]{2,}$",  # Number directly after '@'
+r"^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Only numbers in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\d+[a-zA-Z]+\.[a-zA-Z]{2,}$",  # Mixed letters and numbers in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Subdomain that is TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]{1,}\.[a-zA-Z]{2,}$",  # Single character domain name
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[0-9]{3,}$",  # Numeric TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\s*$",  # Trailing spaces allowed
+r"^\"[a-zA-Z0-9._%+-]+\"@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Quoted local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z]+)+$",  # Domain with multiple periods
+r"^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$",  # Only lowercase in domain
+r"^[a-zA-Z0-9._%+-]+-[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen in local part
+r"^[!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Special char-only local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.{2,})+[a-zA-Z]{2,}$",  # Multiple consecutive dots in domain
+r"^[a-zA-Z0-9._%+-]+\.$@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Period before @ symbol
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.\d+$",  # Numeric TLD
+r"^[-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Only hyphens in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_.-]+\.[a-zA-Z]{2,}$",  # Underscores in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+![a-zA-Z]{2,}$",  # Exclamation in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{4,}$",  # Uncommon TLD length
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{1}$",  # Single character TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+@[a-zA-Z]{2,}$",  # Multiple '@' symbols
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.\d+$",  # Numeric TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.\.[a-zA-Z]{2,}$",  # Double dots in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.$",  # Period at the end of domain
+r"^[a-zA-Z0-9._%+-]+\+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Plus sign at the end of local part
+r"^[0-9]+@[0-9]+\.[a-zA-Z]{2,}$",  # Only digits in local part and domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_.-]+\.[a-zA-Z]{2,}$",  # Underscore in domain part
+r"^[a-zA-Z0-9._%+-]{1}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Single character local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.$",  # Domain ends with period
+r"^[a-zA-Z0-9._%+-]+(\.{2,})+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple consecutive dots in local part
+r"^\d+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Only digits in local part
+r"^[a-zA-Z0-9._%+-]+-[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen in local part
+r"^[a-zA-Z0-9._%+-]+@[.][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Period at the beginning of domain
+r"^[a-zA-Z0-9._%+-]+@[0-9]+\.[a-zA-Z]{2,}$",  # Only numbers in domain
+r"^[a-zA-Z0-9._%+-]+@[0-9][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Domain starts with number
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+-[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple hyphens in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$", # Multiple subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}.$",  # Period at the end of domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,8}$",  # Non-standard TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[0-9]+$",  # Non-alphabetical TLD
+r"^[a-zA-Z0-9._%+-]{1}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # One character in the local part
+r"^[a-zA-Z0-9._%+-]+[0-9]@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Local part ends with a number
+r"^[a-zA-Z0-9._%+-]+@[\d]+\.[a-zA-Z]{2,}$",  # Numeric domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+@[a-zA-Z]{2,}$",  # Same domain repeated
+r"^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple '@' symbols
+r"^[!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Special characters in local part
+r"^[a-zA-Z0-9._%+-]+\.\.[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Consecutive dots in local part
+r"^[a-zA-Z0-9._%+-]+@+$",  # Empty domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{256}\.[a-zA-Z]{2,}$",  # Domain part is too long
+r"^[a-zA-Z0-9._%+-]{1}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Local part with one character
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-#]+\.[a-zA-Z]{2,}$",  # Non-standard characters in domain
+r"^[a-zA-Z0-9._%+-]+@[-a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Domain starts with hyphen
+r"^[a-zA-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$",  # Uppercase domain and TLD
+r"^[a-zA-Z0-9._%+-]+@[0-9]+\.[a-zA-Z]{2,}$",  # Domain contains numbers only
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{1}\.[a-zA-Z]{2,}$",  # Single character domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\W]+[a-zA-Z]{2,}$",  # Local part and domain end with special characters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[0-9]+$",  # Numeric TLD
+r"^[a-zA-Z0-9._%+-]{1}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # One-character local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[0-9]+\.[a-zA-Z]{2,}$",  # Numeric domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]{2,}$",  # Underscore in domain part
+r"^[a-zA-Z0-9._%+-]+@[\.-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Period after @ symbol
+r"^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Local part only digits   r"^[a-zA-Z0-9._%+-]+@[\.]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Period at the start of domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Consecutive hyphens in domain
+r"^[_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore-only local part
+r"^[a-zA-Z0-9._%+-]{1}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # One-character local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[0-9]+\.[a-zA-Z]{2,}$",  # Numeric domain part
+r"^[a-zA-Z0-9._%+-]{1}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Single character local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Extra '@' symbol
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z]{2,}$",  # Underscores in domain
+r"^[a-zA-Z0-9._%+-]+[+]+@+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Special character at the end of local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.([a-zA-Z]+)$",  # Mixed case in domain
+r"^[a-zA-Z0-9._%+-]+@[0-9]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Numbers at the start of domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[#]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Invalid special character in domain
+r"^[a-zA-Z0-9._%+-]+[.]{2,}[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple dots in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+$",  # Domain without TLD
+r"^@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Missing local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3,}$",  # Uncommon TLD
+r"^[a-zA-Z0-9._%+-]+[$]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Non-alphanumeric character in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple '@' symbols
+r"^[@]$",  # Missing local part and domain
+r"^[.]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Local part with only dots
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$",  # Non-existent TLD
+r"^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Numeric local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[/]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Slash in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{2,}[.]{2,}[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple dots in domain part
+r"^[a-zA-Z0-9._%+-]+@[0-9]+\.[a-zA-Z]{2,}$",  # Numeric domain part
+r"^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Numeric local part
+r"^[a-zA-Z0-9._%+-]+[!]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple special chars in local part
+r"^[a-zA-Z0-9._%+-]+[!]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Special char followed by letters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]{20,}\.[a-zA-Z]{2,}$",  # Long domain part
+r"^[a-zA-Z0-9._%+-]+@[\-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen at the start of domain
+r"^[a-zA-Z0-9._%+-]+@[\.]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Period at the start of domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Consecutive hyphens in domain
+r"^[_]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore-only local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+#[a-zA-Z]{2,}$",  # Special char in domain
+r"^[a-zA-Z0-9._%+-]+@[0-9][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Domain starts with number
+r"^[a-zA-Z0-9._%+-]+\s+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Spaces in local part
+r"^[a-zA-Z0-9._%+-]+@[-][a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Domain starts with hyphen
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\.$",  # Ends with dot
+r"^[A-Z]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Uppercase letters in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+$",  # Missing TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+--[a-zA-Z]{2,}$",  # Multiple hyphens in domain
+r"^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Only numbers in local part
+r"^[a-zA-Z0-9._%+-]+_[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.\.[a-zA-Z]{2,}$",  # Consecutive periods in domain
+r"Domain part exceeds 253 characters",  # Domain part exceeds 253 characters
+r"^[a-zA-Z0-9._%+-]+@[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$",  # IP address in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$",  # Numbers in TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple subdomains
+r"Local part exceeds 64 characters",  # Local part exceeds 64 characters
+r"^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Double @ symbol
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2}$",  # Two-character TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{3}$",  # TLD of exactly 3 characters
+r"^[a-z]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Only lowercase in local part
+r"^[A-Z]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Only uppercase in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$",  # Multiple subdomains with numbers
+r"^[a-zA-Z0-9._%+-]+[+]+[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Plus symbol in local part
+r"^[a-zA-Z0-9._%+-]+[\.]+@[a-zA-Z0-9.-]+\.[a-zAZ]{2,}$",  # Local part ends with period
+r"^[0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Only number in local part
+r"^[a-zA-Z0-9._%+-]+[\.]{2,}[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Consecutive dots in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen at the end of domain
+r"^[a-zA-Z0-9._%+-]{1}@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Single character in local part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+_[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$",  # Numeric TLD
+r"^@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # No local part, just domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\s+[a-zA-Z]{2,}$",  # Space in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.]+[a-zA-Z]{3,}$",  # Domain ends with a period
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\d]+[a-zA-Z]{2,}$",  # Domain contains digits
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]{1,}$",  # Domain contains a single character TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[^a-zA-Z0-9.-]{2,}$",  # Special characters in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{3,}$",  # Numeric TLD with exactly 3 digits
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-][a-zA-Z0-9.-]+\.[a-zA-Z]{3,}$",  # Hyphen in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[~]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Tilde in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\d]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Numeric subdomain and hyphen in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.]{2}[a-zA-Z]{2,}$",  # Multiple dots in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\.]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Dot before TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[_]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[!]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Exclamation mark in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[&]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Ampersand in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[#]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hash symbol in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\?]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Question mark in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[=]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Equal sign in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[;]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Semicolon in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{4,}$",  # Domain with a 4-character TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,5}$",  # Valid TLD of length 2 to 5
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.]{3,}[a-zA-Z]{2,}$",  # Multiple dots before TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[\-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen in subdomain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\w]+[\-][\w]+\.[a-zA-Z]{2,}$",  # Alphanumeric subdomain with hyphen
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[0-9]{2,}[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Numbers followed by alphanumeric domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[\_]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{3,5}$",  # TLD with 3-5 alphanumeric characters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\+]{2,}[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Plus symbol repeated in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\d]{1,}[a-zA-Z0-9.-]+[.][a-zA-Z]{2,}$",  # Domain starts with a number and ends with a TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-_]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen or underscore in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[-_]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Alphanumeric with hyphen or underscore
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[a-zA-Z0-9]+[\.-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen in domain part followed by subdomain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]{1,5}[\_]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Single letter TLD with underscore in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[-_]+[a-zA-Z0-9]+[\.]{2,}[a-zA-Z]{2,}$",  # Hyphen or underscore in domain with multiple dots before TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]{2,}[.-_]+[a-zA-Z]{2,}$",  # Alphanumeric domain with special chars before TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[.-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Alphanumeric domain followed by period and subdomain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[-]+[a-zA-Z]{2,5}$",  # Domain with hyphen and short TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]{1,5}[A-Za-z0-9.-]{1,}[a-zA-Z]{2,}$",  # Complex domain with 1 to 5 characters and mix of alphanumeric parts
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\d]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Numeric domain followed by alphanumeric TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]+[0-9]+[.-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Alphanumeric mix in domain with number placement
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Alphanumeric domain with hyphen
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\+]+[a-zA-Z0-9]+[.]+[a-zA-Z]{2,}$",  # Plus sign in domain with valid TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]+[0-9]+[\.-]+[a-zA-Z]{2,}$",  # Domain with alphanumeric mix and hyphen or period
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]+[\.]+[A-Za-z0-9.-]+\.[a-zA-Z]{2,}$",  # Domain with alphanumeric subdomain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[_]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Underscore in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Domain with hyphen in domain part before TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[a-zA-Z0-9._%+-]+[.]+[a-zA-Z]{2,}$",  # Period before TLD with special characters in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[\d]{1,}[a-zA-Z0-9.-]+[.]{2,}[a-zA-Z]{2,}$",  # Domain with digits and multiple periods
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]+[-_]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Alphanumeric domain with hyphen or underscore
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[a-zA-Z0-9]+[\.-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Mixed domain with hyphens and periods
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]+[0-9]{2,}[.-]+[a-zA-Z]{2,}$",  # Domain with letters followed by 2 or more digits and subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]{2,}[a-zA-Z0-9.-]*$",  # Domain with alphanumeric suffix after TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]{2,}\.[a-zA-Z]{2,}$",  # Simple two-level domain name
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[-]+[a-zA-Z]{2,}$",  # Mixed domain with hyphen and alphanumeric TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[_]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Domain with underscore in part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[a-zA-Z0-9]+[.]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen before period
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[a-zA-Z0-9.-]+[.]{2,}[a-zA-Z]{2,}$",  # Multiple periods in domain part
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]{2,}[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen after TLD and subdomain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[-]+[a-zA-Z0-9.-]*[a-zA-Z]{2,}$",  # Hyphen in domain followed by valid TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}[-]+[A-Za-z0-9.-]+\.[a-zA-Z]{2,}$",  # Alphanumeric domain with hyphen in subdomain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[A-Za-z0-9._%+-]+[.]+[a-zA-Z]{2,}$",  # Mixed domain with hyphen and special chars
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[a-zA-Z0-9]+[.-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Multiple hyphens and periods
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{1,5}[A-Za-z]{2,}[.-]+[a-zA-Z]{2,}$",  # Alphanumeric mix in domain followed by TLD and subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[a-zA-Z]{2,}[0-9]{1,5}[.-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Digits after TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]+[.-]+[a-zA-Z]{2,}[A-Za-z0-9.-]*$",  # Period after alphanumeric characters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}[0-9]+$",  # Domain with hyphen followed by numeric TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Mixed domain with hyphen and valid TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{1,}[A-Za-z]{2,}[.-]+[a-zA-Z]{2,}$",  # Alphanumeric mix and multiple periods
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]{2,}[A-Za-z0-9.-]+[\.-]+[a-zA-Z]{2,}$",  # Mixed domain with period in between subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]+[.-]+[a-zA-Z0-9.-]*[a-zA-Z]{2,}$",  # Alphanumeric domain with period separator
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen in domain name
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z]{2,}\.[a-zA-Z]{2,}[A-Za-z0-9.-]*$",  # Domain with 2-level TLD and possible subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}[-]+[a-zA-Z]{2,}[.-]+[a-zA-Z]{2,}$",  # Domain name with alphanumeric and hyphen separator
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]+[-]+[a-zA-Z0-9.-]+[.-]+[a-zA-Z]{2,}$",  # Hyphen followed by subdomain and TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z]{2,}[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen in the domain and alphanumeric TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}[.-]+[a-zA-Z]{2,}[-]+[a-zA-Z0-9.-]*$",  # Multiple periods and hyphens in domain and subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[a-zA-Z0-9]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+$",  # Domain with multiple subdomains and hyphen
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z]{2,}[.-]+[a-zA-Z]{2,}[-]+[a-zA-Z0-9.-]*$",  # Hyphen with period separation between subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{1,}[A-Za-z]{2,}[-]+[a-zA-Z]{2,}[.-]+[a-zA-Z0-9.-]+$",  # Complex domain with multiple subdomains and hyphen
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}[.-]+[a-zA-Z0-9.-]+[-]+[a-zA-Z]{2,}$",  # Alphanumeric domain followed by hyphen in TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z]{2,}[.-]+[a-zA-Z]{2,}[-]+[a-zA-Z0-9.-]*$",  # Complex domain with period and hyphen separator
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z]{2,}[.-]+[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+$",  # Simple domain with subdomains and dot separation
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]+[.-]+[a-zA-Z]{2,}[A-Za-z0-9.-]*$",  # Domain with multiple periods and alphanumeric characters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Hyphen in domain and simple TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}[-]+[a-zA-Z]{2,}[.-]+[a-zA-Z0-9.-]*$",  # Complex TLD structure with hyphen separator
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Basic standard email with a simple TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}[-]+[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",  # Alphanumeric domain with hyphen and TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]+[.-]+[a-zA-Z]{2,}$",  # Hyphen and period separation between domain and TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]+[.-]+[a-zA-Z]{2,}$",  # Subdomain and hyphenated TLD with period
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]+[-]+[a-zA-Z]{2,}[.-]+[a-zA-Z0-9.-]+$",  # Hyphen with alphanumeric domain and multi-level TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z]{2,}[.-]+[a-zA-Z0-9.-]+[.-]+[a-zA-Z]{2,}$",  # Subdomain and multi-level TLD with periods
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z]{2,}[.-]+[a-zA-Z0-9.-]+$",  # Domain with multiple subdomains and period-separated TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}[.-]+[a-zA-Z0-9.-]+[.-]+[a-zA-Z0-9.-]*$",  # Complex domain with subdomains and multiple separators
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z]{2,}[.-]+[a-zA-Z0-9.-]+[.-]+[a-zA-Z]{2,}$",  # Alphanumeric and hyphenated domain with subdomains and multiple periods
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z]{2,}[.-]+[a-zA-Z0-9.-]+[-]+[a-zA-Z0-9.-]*$",  # Complex email with multiple hyphens and periods in domain
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}[.-]+[a-zA-Z]{2,}[.-]+[a-zA-Z0-9.-]+$",  # Hyphen and alphanumeric TLD with multiple levels
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]+[-]+[a-zA-Z]{2,}[-]+[a-zA-Z0-9.-]+$",  # Domain with hyphen and multiple subdomains
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z]{2,}[-]+[a-zA-Z]{2,}[-]+[a-zA-Z0-9.-]*$",  # Multiple hyphens and periods in domain and TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z]{2,}[-]+[a-zA-Z0-9.-]+[.-]+[a-zA-Z]{2,}$",  # Hyphenated domain followed by period-separated TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]+[-]+[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+$",  # Complex domain with alphanumeric and hyphen
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}[.-]+[a-zA-Z0-9.-]+[.-]+[a-zA-Z]{2,}$",  # Multiple subdomains with hyphens
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,3}$",  # Basic email with 2-3 letter TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,})+$",  # Multiple TLDs separated by periods
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,}){2,}$",  # Multiple TLDs with at least two segments
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}(\.[a-zA-Z]{2,})+$",  # Alphanumeric domain followed by multiple periods and TLDs
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}\.[a-zA-Z]{2,}$",  # TLD must have 2 or more characters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,}$",  # TLD with alphanumeric characters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+$",  # Multi-segment domain followed by a TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,4}$",  # Common email with a 2-4 letter TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[A-Za-z0-9]{2,})+$",  # Multiple TLDs separated by periods
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}[.-][A-Za-z]{2,}$",  # TLD with optional secondary domain after period
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z0-9.-]+[A-Za-z]{2,}$",  # Multi-level domain with a valid TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}\.[a-zA-Z]{2,4}$",  # Alphanumeric TLD with 2-4 characters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$",  # Simple email with basic domain and TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[A-Za-z]{2,4}){2,}$",  # Complex TLD with two or more parts
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z0-9]{2,4})+$",  # Multiple valid TLDs
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z0-9]+[.-]+[A-Za-z]{2,}$",  # Valid email with subdomains and multi-level TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}\.[A-Za-z0-9]{2,}$",  # Alphanumeric domain with a multi-character TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,}){3,}$",  # Multiple TLDs with at least 3 segments
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z0-9]+)+$",  # Multiple TLDs with alphanumeric characters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z]{2,4}(\.[a-zA-Z]{2,4}){2,}$",  # TLD with at least two sub-segments
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,4}$",  # Simple email with 2-4 letter TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}\.[A-Za-z]{2,3}$",  # Alphanumeric domain with 2-3 character TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[A-Za-z]{2,4})+$",  # Multiple 2-4 letter TLDs
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z0-9]+(\.[A-Za-z]{2,})+$",  # Multi-segment domain with alphanumeric and TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[A-Za-z0-9]{2,}\.[a-zA-Z]{2,4}$",  # Alphanumeric domain with specific TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,4}){1,3}$",  # TLD with 1-3 parts
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}[A-Za-z0-9]{1,}$",  # Alphanumeric domain with more complex TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z0-9.-]+$",  # Multi-segment domain followed by an alphanumeric TLD
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}[A-Za-z0-9.-]+$",  # TLD followed by multiple alphanumeric segments
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z0-9.-]{3,}$",  # TLD with 3+ characters
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z0-9]{2,3}[A-Za-z]{2,4}$",  # Complex TLD with both alphanumeric and alphabetic components
+r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}[A-Za-z]{2,}$" # TLD with a combination of character lengths
